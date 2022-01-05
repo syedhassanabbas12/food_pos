@@ -5,7 +5,7 @@ import APP_CONSTANTS from "../../constants/app-constants";
 import "./styles.css";
 
 function Dashboard() {
-  const { t } = useTranslation();
+  const { t: LOCALE } = useTranslation();
 
   const logout = () => {
     removeItem(APP_CONSTANTS.ACCESS_TOKEN);
@@ -15,9 +15,9 @@ function Dashboard() {
 
   return (
     <div>
-      <div>{t("dashboardComponent")}</div>
+      <div>{LOCALE("dashboardComponent")}</div>
 
-      <button onClick={logout}>{t("logout")}</button>
+      <button onClick={logout}>{LOCALE("logout")}</button>
     </div>
   );
 }

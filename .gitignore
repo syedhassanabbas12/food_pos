@@ -1,4 +1,6 @@
 .yarn/cache
+.yarn/install-state.gz
 node_modules
 dist
 build
+yarn.lock
