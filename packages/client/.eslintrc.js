@@ -12,6 +12,7 @@ module.exports = {
     "react/prop-types": "off",
     "import/no-named-as-default-member": "off",
     "import/no-named-as-default": "off",
+    endOfLine: "auto",
   },
   parserOptions: {
     ecmaVersion: 12,
