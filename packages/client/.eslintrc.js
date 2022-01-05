@@ -10,6 +10,8 @@ module.exports = {
     "react/jsx-filename-extension": "off",
     "react/button-has-type": "off",
     "react/prop-types": "off",
+    "import/no-named-as-default-member": "off",
+    "import/no-named-as-default": "off",
   },
   parserOptions: {
     ecmaVersion: 12,
