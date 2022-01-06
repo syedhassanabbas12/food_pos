@@ -1,8 +1,7 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { removeItem } from "../../services/storage-service";
-import APP_CONSTANTS from "../../constants/app-constants";
-import "./styles.css";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { removeItem } from '../../services/storage-service';
+import APP_CONSTANTS from '../../constants/app-constants';
 
 function Dashboard() {
   const { t: LOCALE } = useTranslation();
@@ -15,9 +14,9 @@ function Dashboard() {
 
   return (
     <div>
-      <div>{LOCALE("dashboardComponent")}</div>
+      <div>{LOCALE('dashboardComponent')}</div>
 
-      <button onClick={logout}>{LOCALE("logout")}</button>
+      <button onClick={logout}>{LOCALE('logout')}</button>
     </div>
   );
 }
