@@ -10,6 +10,9 @@ const en = {
   signIn: 'Sign In',
   copyright: 'Copyright © ',
   copyrightWebsiteName: 'Folio3 Pvt. Ltd.',
+  passwordRecovery: 'Password Recovery',
+  sendEmail: 'Send Email',
+  rememberPasswordLogin: 'Remember Password? Login',
 };
 
 export default en;

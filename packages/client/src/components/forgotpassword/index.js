@@ -1,37 +1,34 @@
-import React from 'react';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import HttpsIcon from '@mui/icons-material/Https';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {
   Avatar,
   Button,
   CssBaseline,
   TextField,
-  FormControlLabel,
-  Checkbox,
-  Link,
-  Grid,
   Box,
+  Grid,
+  Link,
   Typography,
   Container,
 } from '@mui/material';
-
 import { useTranslation } from 'react-i18next';
-import { addItem } from '../../services/storage-service';
-import APP_CONSTANTS from '../../constants/app-constants';
+
 import { testServer } from '../../services/auth';
 import Copyright from '../common/custom-component/copyright';
 
 function Login() {
   const { t: LOCALE } = useTranslation();
   const theme = createTheme();
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await testServer();
     console.log('response', response);
     if (response.data) {
-      addItem(APP_CONSTANTS.ACCESS_TOKEN, 'TEST_TOKEN');
-      location.reload();
+      history.push('/login');
     }
   };
 
@@ -41,17 +38,17 @@ function Login() {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 20,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+          <Avatar sx={{ p: 4, m: 3, bgcolor: 'secondary.main' }}>
+            <HttpsIcon />
           </Avatar>
           <Typography component='h1' variant='h5'>
-            {LOCALE('signIn')}
+            {LOCALE('passwordRecovery')}
           </Typography>
           <Box component='form' onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <TextField
@@ -64,38 +61,24 @@ function Login() {
               autoComplete='email'
               autoFocus
             />
-            <TextField
-              margin='normal'
-              required
-              fullWidth
-              name='password'
-              label={LOCALE('password')}
-              type='password'
-              id='password'
-              autoComplete='current-password'
-            />
-            <FormControlLabel
-              control={<Checkbox value='remember' color='primary' />}
-              label={LOCALE('rememberMe')}
-            />
             <Button
               type='submit'
               fullWidth
               variant='contained'
               sx={{ mt: 3, mb: 2 }}
             >
-              {LOCALE('signIn')}
+              {LOCALE('sendEmail')}
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href='forgotpassword' variant='body2'>
-                  {LOCALE('forgotPassword')}
+                <Link href='login' variant='body2'>
+                  {LOCALE('rememberPasswordLogin')}
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Copyright sx={{ mt: 6, mb: 2 }} />
       </Container>
     </ThemeProvider>
   );
