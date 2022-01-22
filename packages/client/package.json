@@ -35,7 +35,7 @@
     "node-sass": "^4.14.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-hook-form": "^7.21.0",
+    "react-hook-form": "^7.25.0",
     "react-i18next": "^11.14.3",
     "react-loadable": "^5.5.0",
     "react-router-dom": "^5.2.0",
