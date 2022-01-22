@@ -30,9 +30,10 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await signin({ email, password });
-    if (response?.data) {
-      addItem(APP_CONSTANTS.ACCESS_TOKEN, response?.data?.token);
-      addItem(APP_CONSTANTS.USER, response?.data?.user);
+    const { data } = response.data;
+    if (data) {
+      addItem(APP_CONSTANTS.ACCESS_TOKEN, data?.token);
+      addItem(APP_CONSTANTS.USER, JSON.stringify(data?.user));
       location.reload();
     }
   };
