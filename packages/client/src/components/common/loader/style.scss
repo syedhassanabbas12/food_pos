@@ -1,0 +1,40 @@
+// App Loader
+
+.app-loader {
+  .ant-spin {
+    position: fixed;
+    z-index: 1052;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ant-spin-dot {
+    font-size: em(24);
+    width: em(34);
+    height: em(34);
+
+    .ant-spin-dot-item {
+      // background-color: $dusty-orange;
+      width: em(14);
+      height: em(14);
+    }
+  }
+}
+
+.ant-spin-nested-loading {
+  > div {
+    > .ant-spin.app-loader {
+      .ant-spin-dot {
+        position: fixed;
+      }
+    }
+  }
+}

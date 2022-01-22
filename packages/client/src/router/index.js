@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Routes from "../config/routes";
+import ROUTES from "../constants/route-constants";
 import { isLoggedIn } from "../helpers/auth-helper";
 
 function AppRouter() {
@@ -29,7 +30,11 @@ function AppRouter() {
           )}
 
       <Route path="*">
-        {isLoggedIn() ? <Redirect to="/dashboard" /> : <Redirect to="/login" />}
+        {isLoggedIn() ? (
+          <Redirect to={ROUTES.ROOT} />
+        ) : (
+          <Redirect to={ROUTES.LOGIN} />
+        )}
       </Route>
     </Switch>
   );
