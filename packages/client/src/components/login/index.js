@@ -18,7 +18,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { addItem } from "../../services/storage-service";
 import APP_CONSTANTS from "../../constants/app-constants";
-import { signin, testServer } from "../../services/auth";
+import { signin } from "../../services/auth";
 import Copyright from "../common/custom-component/copyright";
 
 function Login() {
