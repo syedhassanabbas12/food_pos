@@ -8,6 +8,7 @@ const { Header } = Layout;
 const DefaultHeader = (props) => {
   const logout = () => {
     removeItem(APP_CONSTANTS.ACCESS_TOKEN);
+    removeItem(APP_CONSTANTS.USER);
     location.reload();
   };
 
