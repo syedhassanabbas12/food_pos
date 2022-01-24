@@ -1,16 +1,16 @@
-import React from "react";
-import Loadable from "react-loadable";
-import Loader from "../common/loader/index.js";
+import React from 'react';
+import Loadable from 'react-loadable';
+import Loader from '../common/loader/index.js';
 
 const loading = () => <Loader show={true} />;
 
 // Containers
 const AdminLayout = Loadable({
-  loader: () => import("./AdminLayout.js"),
+  loader: () => import('./AdminLayout.js'),
   loading,
 });
 const UserLayout = Loadable({
-  loader: () => import("./UserLayout.js"),
+  loader: () => import('./UserLayout.js'),
   loading,
 });
 
@@ -21,7 +21,7 @@ function BaseLayout(props) {
   if (isAdmin) Layout = AdminLayout;
 
   return (
-    <div className="app">
+    <div className='app'>
       <Layout {...props} />
     </div>
   );

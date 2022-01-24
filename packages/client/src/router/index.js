@@ -1,8 +1,8 @@
-import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import Routes from "../config/routes";
-import ROUTES from "../constants/route-constants";
-import { isLoggedIn } from "../helpers/auth-helper";
+import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { Routes } from '../config/routes';
+import ROUTES from '../constants/route-constants';
+import { isLoggedIn } from '../helpers/auth-helper';
 
 function AppRouter() {
   return (
@@ -29,7 +29,7 @@ function AppRouter() {
             }
           )}
 
-      <Route path="*">
+      <Route path='*'>
         {isLoggedIn() ? (
           <Redirect to={ROUTES.ROOT} />
         ) : (
