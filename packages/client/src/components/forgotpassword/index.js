@@ -1,87 +1,91 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import HttpsIcon from '@mui/icons-material/Https';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {
-  Avatar,
-  Button,
-  CssBaseline,
-  TextField,
-  Box,
-  Grid,
-  Link,
-  Typography,
-  Container,
-} from '@mui/material';
-import { useTranslation } from 'react-i18next';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { Form, Input, Button, Row, Card, Col, Layout } from 'antd';
+import Styles from '../../styles/css-in-js';
+import CONSTANTS from '../../constants/app-constants';
 
-import { testServer } from '../../services/auth';
-import Copyright from '../common/custom-component/copyright';
+const { ASSETS } = CONSTANTS;
 
-function Login() {
-  const { t: LOCALE } = useTranslation();
-  const theme = createTheme();
-  const history = useHistory();
+const ForgotPassword = (props) => {
+  const { getFieldDecorator } = props.form;
+  const handleSubmit = (e, props) => {
+    const { validateFields } = props.form;
 
-  const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await testServer();
-    console.log('response', response);
-    if (response.data) {
-      history.push('/login');
-    }
+    validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+      }
+    });
   };
-
   return (
-    <ThemeProvider theme={theme}>
-      <Container component='main' maxWidth='xs'>
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 20,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ p: 4, m: 3, bgcolor: 'secondary.main' }}>
-            <HttpsIcon />
-          </Avatar>
-          <Typography component='h1' variant='h5'>
-            {LOCALE('passwordRecovery')}
-          </Typography>
-          <Box component='form' onSubmit={handleSubmit} sx={{ mt: 1 }}>
-            <TextField
-              margin='normal'
-              required
-              fullWidth
-              id='email'
-              label={LOCALE('emailAddress')}
-              name='email'
-              autoComplete='email'
-              autoFocus
-            />
-            <Button
-              type='submit'
-              fullWidth
-              variant='contained'
-              sx={{ mt: 3, mb: 2 }}
+    <Layout>
+      <Row style={Styles.flexAlignMiddle}>
+        <Col xs={{ span: 20, offset: 2 }} md={{ span: 8, offset: 8 }}>
+          <div className='loginWrapper'>
+            <div
+              span={24}
+              className='app-title'
+              style={{ fontSize: 'xx-large' }}
             >
-              {LOCALE('sendEmail')}
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href='login' variant='body2'>
-                  {LOCALE('rememberPasswordLogin')}
-                </Link>
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-        <Copyright sx={{ mt: 6, mb: 2 }} />
-      </Container>
-    </ThemeProvider>
-  );
-}
+              {CONSTANTS.COMPANY_NAME}
+            </div>
+            <Card
+              className='login-card'
+              title={
+                <span>
+                  <h3 className='ant-typography'>Forgot Password</h3>
+                </span>
+              }
+              bordered={false}
+            >
+              <Form onSubmit={(e) => handleSubmit(e)} className='login-form'>
+                <Row>
+                  <Form.Item label='Email Address'>
+                    {getFieldDecorator('email', {
+                      rules: [
+                        {
+                          required: true,
+                          message: 'Please input your email address!',
+                        },
+                      ],
+                    })(<Input />)}
+                  </Form.Item>
+                </Row>
+                <Row>
+                  <Col span={24} className='btns-grp'>
+                    <Link to='/'>
+                      <Button style={{ marginLeft: 8 }}>Go Back</Button>
+                    </Link>
 
-export default Login;
+                    <Button
+                      style={{ marginLeft: 8 }}
+                      type='primary'
+                      htmlType='submit'
+                    >
+                      Send Email
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+            </Card>
+            <div span={24} className='app-title'>
+              <img src={`./../../assets/${ASSETS.COMPANY_LOGO}`} />
+            </div>
+          </div>
+        </Col>
+      </Row>
+    </Layout>
+  );
+};
+
+ForgotPassword.propTypes = {
+  actions: PropTypes.object.isRequired,
+};
+
+const ForgotPasswordForm = Form.create({ name: 'forgot_password' })(
+  ForgotPassword
+);
+
+export default ForgotPasswordForm;

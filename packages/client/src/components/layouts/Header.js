@@ -1,6 +1,8 @@
 import React from 'react';
 import { Layout, Menu, Icon, Typography } from 'antd';
 import { Link } from 'react-router-dom';
+import CONSTANTS from '../../constants/app-constants';
+const { ASSETS } = CONSTANTS;
 
 const { Header } = Layout;
 const { Title } = Typography;
@@ -11,7 +13,7 @@ const AppHeader = () => {
     <Header>
       <Title level={2} className='app-title'>
         <Link to='/dashboard'>
-          <img src={'./../../assets/logo.png'} width={'35px'} />
+          <img src={`./../../assets/${ASSETS.APP_LOGO}`} width={'35px'} />
         </Link>
       </Title>
       <Menu

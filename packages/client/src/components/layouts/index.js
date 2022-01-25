@@ -1,10 +1,9 @@
 import React from 'react';
 import Loadable from 'react-loadable';
-import Loader from '../common/loader/index.js';
+import Loader from '../common/custom-component/loader';
 
-const loading = () => <Loader show={true} />;
+const loading = () => <Loader />;
 
-// Containers
 const AdminLayout = Loadable({
   loader: () => import('./AdminLayout.js'),
   loading,

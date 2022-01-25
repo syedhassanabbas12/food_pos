@@ -14,7 +14,7 @@ import {
 } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import StatusDropdown from '../common/custom-component/dropdowns/status';
-import SalesRepDropdown from '../common/custom-component/dropdowns/SalesRep';
+import SalesRepDropdown from '../common/custom-component/dropdowns/employee';
 import Styles from '../../styles/css-in-js';
 
 function AddVendor(props) {

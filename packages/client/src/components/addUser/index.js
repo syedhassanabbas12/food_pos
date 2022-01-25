@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
@@ -10,23 +10,69 @@ import {
   Divider,
   Button,
   Input,
-  InputNumber,
   DatePicker,
+  Checkbox,
 } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import EmployeeStatusDropdown from '../common/custom-component/dropdowns/employee-status';
-import SalesRepDropdown from '../common/custom-component/dropdowns/employee';
 import MaritalStatusDropdown from '../common/custom-component/dropdowns/marital-status';
 import GenderDropdown from '../common/custom-component/dropdowns/gender';
 import DepartmentDropdown from '../common/custom-component/dropdowns/department';
 import DesignationDropdown from '../common/custom-component/dropdowns/designation';
 import BranchDropdown from '../common/custom-component/dropdowns/branch';
 import NationalityDropdown from '../common/custom-component/dropdowns/nationality';
-
 import Styles from '../../styles/css-in-js';
+
+const permissionOptions = [
+  { label: 'Dashboard', value: 'DASHBOARD', disabled: true },
+  { label: 'My Profile', value: 'USER_PROFILE', disabled: true },
+  { label: 'User', value: 'USER' },
+  { label: 'Customer', value: 'CUSTOMER' },
+  { label: 'Products', value: 'PRODUCTS' },
+  { label: 'Invoice', value: 'INVOICE' },
+  { label: 'Bill', value: 'BILL' },
+  { label: 'Expense', value: 'EXPENSE' },
+  { label: 'Inventory', value: 'INVENTORY' },
+  { label: 'Branch', value: 'BRANCH' },
+  { label: 'Department', value: 'DEPARTMENT' },
+  { label: 'Designation', value: 'DESIGNATION' },
+  { label: 'Unit', value: 'UNIT' },
+  { label: 'Report', value: 'REPORT' },
+];
+
+const disabledAndSelected = ['DASHBOARD', 'USER_PROFILE'];
 
 function AddUser(props) {
   const { getFieldDecorator } = props.form;
+  const initialCheckedList = [...disabledAndSelected];
+  const intialState = {
+    checkedList: initialCheckedList,
+    indeterminate:
+      !!initialCheckedList.length &&
+      initialCheckedList.length < permissionOptions.length,
+    checkAll: initialCheckedList.length === permissionOptions.length,
+  };
+  const [state, setState] = useState(intialState);
+
+  const onChange = (checkedList) => {
+    setState({
+      ...state,
+      checkedList,
+      indeterminate:
+        !!checkedList.length && checkedList.length < permissionOptions.length,
+      checkAll: checkedList.length === permissionOptions.length,
+    });
+  };
+  const onCheckAllChange = (e) => {
+    setState({
+      ...state,
+      checkedList: e.target.checked
+        ? permissionOptions.map((option) => option.value)
+        : disabledAndSelected,
+      indeterminate: false,
+      checkAll: e.target.checked,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -330,6 +376,46 @@ function AddUser(props) {
             </Form.Item>
           </Col>
         </Row>
+        <Row gutter={24}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <Form.Item name='allowed_features' label='Allowed Features'>
+              <Checkbox
+                indeterminate={state.indeterminate}
+                onChange={onCheckAllChange}
+                checked={state.checkAll}
+              >
+                Check all features
+              </Checkbox>
+
+              <Divider style={{ marginTop: '5px', marginBottom: '5px' }} />
+
+              {getFieldDecorator('features', {
+                initialValue: state.checkedList,
+                valuePropName: 'defaultValue',
+              })(
+                <Checkbox.Group value={state.checkedList} onChange={onChange}>
+                  <Row gutter={32}>
+                    {permissionOptions.map((option, index) => {
+                      return (
+                        <Col span={6} key={index}>
+                          <Checkbox
+                            key={option.value}
+                            value={option.value}
+                            disabled={option.disabled}
+                          >
+                            {option.label}
+                          </Checkbox>
+                        </Col>
+                      );
+                    })}
+                  </Row>
+                </Checkbox.Group>
+              )}
+
+              <Divider style={{ marginTop: '5px', marginBottom: '5px' }} />
+            </Form.Item>
+          </Col>
+        </Row>
         <Divider />
         <Row gutter={24}>
           <Col span={24} className='btns-grp'>
@@ -387,8 +473,8 @@ AddUser.propTypes = {
   match: PropTypes.object,
 };
 
-const WrappedAddAddUser = Form.create({
+const WrappedAddUser = Form.create({
   name: 'add_user',
 })(AddUser);
 
-export default WrappedAddAddUser;
+export default WrappedAddUser;

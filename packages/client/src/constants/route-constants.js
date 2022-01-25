@@ -4,6 +4,7 @@ const ROUTES = {
 
   LOGIN: '/login',
   FORGOT_PASSWORD: '/forgotpassword',
+  RESET_PASSWORD: '/resetpassword',
 
   EDIT_PROFILE: '/editprofile',
   CHANGE_PASSWORD: '/changepassword',
@@ -23,6 +24,9 @@ const ROUTES = {
   ADD_INVENTORY_ADJUSTMENT: '/addinventoryadjustment',
   LIST_INVENTORY_ADJUSTMENTS: '/inventoryadjustments',
 
+  ADD_INVENTORY_TRANSFER: '/addinventorytransfer',
+  LIST_INVENTORY_TRANSFERS: '/inventorytransfers',
+
   ADD_PRODUCT: '/addproduct',
   LIST_PRODUCT: '/products',
 
@@ -37,6 +41,9 @@ const ROUTES = {
 
   ADD_VENDOR: '/addvendor',
   LIST_VENDORS: '/vendors',
+
+  ADD_UNIT: '/addunit',
+  LIST_UNITS: '/units',
 
   ADD_VENDOR_BILL: '/addvendorbill',
   LIST_VENDOR_BILLS: '/bills',

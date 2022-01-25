@@ -267,8 +267,8 @@ AddCustomer.propTypes = {
   match: PropTypes.object,
 };
 
-const WrappedAddAddCustomer = Form.create({
+const WrappedAddCustomer = Form.create({
   name: 'add_customer',
 })(AddCustomer);
 
-export default WrappedAddAddCustomer;
+export default WrappedAddCustomer;

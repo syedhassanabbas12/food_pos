@@ -1,111 +1,112 @@
-import React, { useState } from "react";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import {
-  Avatar,
-  Button,
-  CssBaseline,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-  Link,
-  Grid,
-  Box,
-  Typography,
-  Container,
-} from "@mui/material";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { Form, Input, Button, Card, Col, Row, Layout } from 'antd';
+import Styles from '../../styles/css-in-js';
+import CONSTANTS from '../../constants/app-constants';
+const { ASSETS } = CONSTANTS;
 
-import { useTranslation } from "react-i18next";
-import { addItem } from "../../services/storage-service";
-import APP_CONSTANTS from "../../constants/app-constants";
-import { signin } from "../../services/auth";
-import Copyright from "../common/custom-component/copyright";
+const Login = (props) => {
+  const { getFieldDecorator } = props.form;
 
-function Login() {
-  const { t: LOCALE } = useTranslation();
-  const theme = createTheme();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const handleSubmit = (e) => {
+    const { form } = props;
+    const { validateFields } = form;
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const response = await signin({ email, password });
-    const { data } = response.data;
-    if (data) {
-      addItem(APP_CONSTANTS.ACCESS_TOKEN, data?.token);
-      addItem(APP_CONSTANTS.USER, JSON.stringify(data?.user));
-      location.reload();
-    }
+    e.preventDefault();
+    validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values from form', values);
+      }
+    });
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            {LOCALE("signIn")}
-          </Typography>
-          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label={LOCALE("emailAddress")}
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={email}
-              onInput={(e) => setEmail(e.target.value)}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label={LOCALE("password")}
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={password}
-              onInput={(e) => setPassword(e.target.value)}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label={LOCALE("rememberMe")}
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+    <Layout>
+      <Row style={Styles.flexAlignMiddle}>
+        <Col xs={{ span: 20, offset: 2 }} md={{ span: 8, offset: 8 }}>
+          <div className='loginWrapper'>
+            <div
+              span={24}
+              className='app-title'
+              style={{ fontSize: 'xx-large' }}
             >
-              {LOCALE("signIn")}
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="forgotpassword" variant="body2">
-                  {LOCALE("forgotPassword")}
-                </Link>
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
-    </ThemeProvider>
+              {CONSTANTS.COMPANY_NAME}
+            </div>
+            <Card
+              className='login-card'
+              title={
+                <span>
+                  <h3 className='ant-typography'>Login Page</h3>
+                </span>
+              }
+              bordered={false}
+            >
+              <Form
+                onSubmit={(e) => handleSubmit(e, props)}
+                className='login-form'
+              >
+                <Row>
+                  <Form.Item label='Email Address'>
+                    {getFieldDecorator('email', {
+                      rules: [
+                        {
+                          required: true,
+                          message: 'Please input your email Address!',
+                        },
+                      ],
+                    })(<Input />)}
+                  </Form.Item>
+                </Row>
+                <Row>
+                  <Form.Item label='Password'>
+                    {getFieldDecorator('password', {
+                      rules: [
+                        {
+                          required: true,
+                          message: 'Please input your Password!',
+                        },
+                      ],
+                    })(<Input.Password type='password' />)}
+                  </Form.Item>
+                </Row>
+                <Row>
+                  <Form.Item style={{ marginBottom: 0, textAlign: 'center' }}>
+                    <Link
+                      to={`/forgotpassword`}
+                      className='login-form-forgot'
+                      style={Styles.rightAlign}
+                    >
+                      Forget Password
+                    </Link>
+                    <Button
+                      type='primary'
+                      htmlType='submit'
+                      className='login-form-button'
+                      block
+                      loading={false}
+                    >
+                      Log in
+                    </Button>
+                  </Form.Item>
+                </Row>
+              </Form>
+            </Card>
+            <div span={24} className='app-title'>
+              <img src={`./../../assets/${ASSETS.COMPANY_LOGO}`} />
+            </div>
+          </div>
+        </Col>
+      </Row>
+    </Layout>
   );
-}
+};
 
-export default Login;
+Login.propTypes = {
+  form: PropTypes.object,
+  LoginStore: PropTypes.object.isRequired,
+};
+
+const LoginForm = Form.create({ name: 'login' })(Login);
+
+export default LoginForm;

@@ -1,5 +1,6 @@
 import Login from '../components/login';
 import ForgotPassword from '../components/forgotpassword';
+import ResetPassword from '../components/resetPassword';
 import Dashboard from '../components/dashboard';
 import AddUser from '../components/adduser';
 import AddCustomer from '../components/addCustomer';
@@ -28,6 +29,10 @@ import AddDepartment from '../components/addDepartment';
 import ListDepartments from '../components/listDepartments';
 import ListDesignations from '../components/listDesignations';
 import AddDesignation from '../components/addDesignation';
+import AddInventoryTransfer from '../components/addInventoryTransfer';
+import ListInventoryTransfers from '../components/listInventoryTransfers';
+import AddUnit from '../components/addUnit';
+import ListUnits from '../components/listUnits';
 
 const Routes = [
   {
@@ -40,6 +45,12 @@ const Routes = [
     name: 'Forgot Password',
     path: ROUTES.FORGOT_PASSWORD,
     component: ForgotPassword,
+    requireAuthentication: false,
+  },
+  {
+    name: 'Reset Password',
+    path: ROUTES.RESET_PASSWORD,
+    component: ResetPassword,
     requireAuthentication: false,
   },
   {
@@ -85,6 +96,12 @@ const Routes = [
     requireAuthentication: true,
   },
   {
+    name: 'Add Inventory Transfer',
+    path: ROUTES.ADD_INVENTORY_TRANSFER,
+    component: AddInventoryTransfer,
+    requireAuthentication: true,
+  },
+  {
     name: 'Add Product',
     path: ROUTES.ADD_PRODUCT,
     component: AddProduct,
@@ -106,6 +123,12 @@ const Routes = [
     name: 'Add Department',
     path: ROUTES.ADD_DEPARTMENT,
     component: AddDepartment,
+    requireAuthentication: true,
+  },
+  {
+    name: 'Add Unit',
+    path: ROUTES.ADD_UNIT,
+    component: AddUnit,
     requireAuthentication: true,
   },
   {
@@ -181,6 +204,12 @@ const Routes = [
     requireAuthentication: true,
   },
   {
+    name: 'List Units',
+    path: ROUTES.LIST_UNITS,
+    component: ListUnits,
+    requireAuthentication: true,
+  },
+  {
     name: 'List Vendor Bills',
     path: ROUTES.LIST_VENDOR_BILLS,
     component: ListVendorBills,
@@ -190,6 +219,12 @@ const Routes = [
     name: 'List Expenses',
     path: ROUTES.LIST_EXPENSES,
     component: ListExpenses,
+    requireAuthentication: true,
+  },
+  {
+    name: 'List Inventory Transfers',
+    path: ROUTES.LIST_INVENTORY_TRANSFERS,
+    component: ListInventoryTransfers,
     requireAuthentication: true,
   },
   {
@@ -262,6 +297,12 @@ const SiderList = [
     icon: 'calculator',
   },
   {
+    key: 'inventoty-transfer',
+    text: 'Transfer Inventory',
+    to: ROUTES.LIST_INVENTORY_TRANSFERS,
+    icon: 'shopping-cart',
+  },
+  {
     key: 'list-branches',
     text: 'Branches',
     to: ROUTES.LIST_BRANCHES,
@@ -278,6 +319,12 @@ const SiderList = [
     text: 'Designations',
     to: ROUTES.LIST_DESIGNATIONS,
     icon: 'appstore',
+  },
+  {
+    key: 'list-units',
+    text: 'Units',
+    to: ROUTES.LIST_UNITS,
+    icon: 'number',
   },
   {
     key: 'summary-report',

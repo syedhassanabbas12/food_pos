@@ -5,15 +5,19 @@ import 'antd/dist/antd.css';
 import './styles/style.less';
 import * as BizChart from 'bizcharts';
 import BizTheme from './styles/BizTheme';
-require('./assets/favicon.ico');
+import CONSTANTS from './constants/app-constants';
+const { ASSETS } = CONSTANTS;
+require(`./assets/${ASSETS.FAVICON}`);
 
 BizChart.setTheme(BizTheme);
 
 function App() {
   return (
-    <Router>
-      <AppRouter />
-    </Router>
+    <div className='hrms-style'>
+      <Router>
+        <AppRouter />
+      </Router>
+    </div>
   );
 }
 

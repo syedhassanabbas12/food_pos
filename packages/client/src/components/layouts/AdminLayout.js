@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import { Layout } from 'antd';
 
-import Loader from '../common/loader';
+import Loader from '../common/custom-component/loader';
 import ROUTES from '../../constants/route-constants';
 
 import { Routes } from '../../config/routes';
@@ -25,7 +25,7 @@ const AdminLayout = () => {
         <AppHeader />
 
         <Content className='contentMain'>
-          <Suspense fallback={<Loader show={true} />}>
+          <Suspense fallback={<Loader />}>
             {authenticatedRoutes && (
               <Switch>
                 {authenticatedRoutes?.map((route, idx) => {
