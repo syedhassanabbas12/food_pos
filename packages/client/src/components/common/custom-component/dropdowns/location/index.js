@@ -4,13 +4,13 @@ import { Select } from 'antd';
 
 const { Option } = Select;
 
-const Class = (props) => {
+const Location = (props) => {
   return (
     <Select
       {...props}
       showSearch
       style={{ width: '100%' }}
-      placeholder='Class'
+      placeholder='Location'
       optionFilterProp='children'
       allowClear
       filterOption={(input, option) =>
@@ -23,16 +23,16 @@ const Class = (props) => {
       }
     >
       <Option value='1' key='1'>
-        Class 1
+        Location 1
       </Option>
       <Option value='2' key='2'>
-        Class 2
+        Location 2
       </Option>
       <Option value='3' key='3'>
-        Bracnh 3
+        Location 3
       </Option>
     </Select>
   );
 };
 
-export default Class;
+export default Location;

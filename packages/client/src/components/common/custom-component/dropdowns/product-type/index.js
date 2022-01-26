@@ -4,13 +4,13 @@ import { Select } from 'antd';
 
 const { Option } = Select;
 
-const Class = (props) => {
+const ProductType = (props) => {
   return (
     <Select
       {...props}
       showSearch
       style={{ width: '100%' }}
-      placeholder='Class'
+      placeholder='Product Type'
       optionFilterProp='children'
       allowClear
       filterOption={(input, option) =>
@@ -22,17 +22,26 @@ const Class = (props) => {
           .localeCompare(optionB.children.toLowerCase())
       }
     >
+      <Option value='0' key='0'>
+        Inventory
+      </Option>
       <Option value='1' key='1'>
-        Class 1
+        Non Inventory
       </Option>
       <Option value='2' key='2'>
-        Class 2
+        Charge Item
       </Option>
       <Option value='3' key='3'>
-        Bracnh 3
+        Service Item
+      </Option>
+      <Option value='4' key='4'>
+        Discount Item
+      </Option>
+      <Option value='5' key='5'>
+        Kit Item
       </Option>
     </Select>
   );
 };
 
-export default Class;
+export default ProductType;

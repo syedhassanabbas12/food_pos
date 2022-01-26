@@ -11,7 +11,7 @@ const columns = [
     render: (text, record) => {
       return (
         <span>
-          <Link to={`/viewbranch/${record.id}`}>View</Link>
+          <Link to={`/viewlocation/${record.id}`}>View</Link>
         </span>
       );
     },
@@ -30,7 +30,7 @@ const columns = [
   },
 ];
 
-function ListBranches() {
+function ListLocations() {
   const pagination = {
     current: 0,
     showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
@@ -46,18 +46,18 @@ function ListBranches() {
             <Link to={'/'} className='btn-back'>
               <Icon type='arrow-left' />
             </Link>
-            {'Branches'}
+            {'Locations'}
           </h3>
         </span>
       }
       bordered={false}
       extra={
-        <Link to={`/addbranch`}>
+        <Link to={`/addlocation`}>
           <Button
             style={{ marginLeft: 8 }}
             className='ant-btn ant-btn-primary btn-add'
           >
-            Add Branch
+            Add Location
           </Button>
         </Link>
       }
@@ -79,4 +79,4 @@ function ListBranches() {
   );
 }
 
-export default ListBranches;
+export default ListLocations;

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const { Footer } = Layout;
 
-const DefaultFooter = () => {
+const AppFooter = () => {
   return (
     <Footer>
       <p>Copyright &copy; 2022 Folio3.</p>
@@ -26,4 +26,4 @@ const DefaultFooter = () => {
   );
 };
 
-export default DefaultFooter;
+export default AppFooter;

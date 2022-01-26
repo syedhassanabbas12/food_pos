@@ -19,30 +19,41 @@ import MaritalStatusDropdown from '../common/custom-component/dropdowns/marital-
 import GenderDropdown from '../common/custom-component/dropdowns/gender';
 import DepartmentDropdown from '../common/custom-component/dropdowns/department';
 import DesignationDropdown from '../common/custom-component/dropdowns/designation';
-import BranchDropdown from '../common/custom-component/dropdowns/branch';
+import LocationDropdown from '../common/custom-component/dropdowns/location';
 import NationalityDropdown from '../common/custom-component/dropdowns/nationality';
 import Styles from '../../styles/css-in-js';
 
 const permissionOptions = [
   { label: 'Dashboard', value: 'DASHBOARD', disabled: true },
-  { label: 'My Profile', value: 'USER_PROFILE', disabled: true },
-  { label: 'User', value: 'USER' },
+  { label: 'My Profile', value: 'EMPLOYEE_PROFILE', disabled: true },
+  { label: 'Employee', value: 'EMPLOYEE' },
   { label: 'Customer', value: 'CUSTOMER' },
   { label: 'Products', value: 'PRODUCTS' },
+  { label: 'Sales Order', value: 'SALES_ORDER' },
   { label: 'Invoice', value: 'INVOICE' },
+  { label: 'Payment', value: 'CUSTOMER' },
+  { label: 'Credit Memo', value: 'CREDIT_MEMO' },
+  { label: 'Return Authorization', value: 'RETURN_AUTHORIZATION' },
+  { label: 'Purchase Order', value: 'PURCHASE_ORDER' },
   { label: 'Bill', value: 'BILL' },
+  { label: 'Vendor Credit', value: 'VENDOR_CREDIT' },
+  {
+    label: 'Vendor Return Authorization',
+    value: 'VENDOR_RETURN_AUTHORIZATION',
+  },
   { label: 'Expense', value: 'EXPENSE' },
   { label: 'Inventory', value: 'INVENTORY' },
-  { label: 'Branch', value: 'BRANCH' },
+  { label: 'Class', value: 'CLASS' },
+  { label: 'Location', value: 'LOCATION' },
   { label: 'Department', value: 'DEPARTMENT' },
   { label: 'Designation', value: 'DESIGNATION' },
   { label: 'Unit', value: 'UNIT' },
   { label: 'Report', value: 'REPORT' },
 ];
 
-const disabledAndSelected = ['DASHBOARD', 'USER_PROFILE'];
+const disabledAndSelected = ['DASHBOARD', 'EMPLOYEE_PROFILE'];
 
-function AddUser(props) {
+function AddEmployee(props) {
   const { getFieldDecorator } = props.form;
   const initialCheckedList = [...disabledAndSelected];
   const intialState = {
@@ -87,7 +98,7 @@ function AddUser(props) {
         formData.append('name', values.name);
         formData.append('gender', values.gender);
         formData.append('maritalstatus', values.maritalstatus);
-        formData.append('branch', values.branch);
+        formData.append('location', values.location);
         formData.append('department', values.department);
         formData.append('designation', values.designation);
         formData.append('status', values.status);
@@ -103,7 +114,7 @@ function AddUser(props) {
         formData.append('hiredate', values.hiredate);
         formData.append('bloodgroup', values.bloodgroup);
         formData.append('terminationdate', values.terminationdate);
-        // props.actions.AddUser(formData);
+        // props.actions.AddEmployee(formData);
       }
     });
   };
@@ -113,7 +124,7 @@ function AddUser(props) {
 
     if (location.state && location.state.comingFrom)
       history.push(location.state.comingFrom);
-    else history.push('/users');
+    else history.push('/employees');
   };
 
   const handleReset = () => {
@@ -181,13 +192,15 @@ function AddUser(props) {
         </Row>
         <Row gutter={24}>
           <Col xs={24} sm={12} md={6} lg={6}>
-            <Form.Item label='Branch'>
+            <Form.Item label='Location'>
               {
                 <>
-                  {getFieldDecorator('branch', {
-                    rules: [{ required: true, message: 'Branch is required' }],
+                  {getFieldDecorator('location', {
+                    rules: [
+                      { required: true, message: 'Location is required' },
+                    ],
                     initialValue: null,
-                  })(<BranchDropdown />)}
+                  })(<LocationDropdown />)}
                 </>
               }
             </Form.Item>
@@ -454,7 +467,7 @@ function AddUser(props) {
               <Link onClick={goBack} className='btn-back'>
                 <Icon type='arrow-left' />
               </Link>
-              {'Add User'}
+              {'Add Employee'}
             </h3>
           </span>
         }
@@ -466,15 +479,15 @@ function AddUser(props) {
   );
 }
 
-AddUser.propTypes = {
+AddEmployee.propTypes = {
   form: PropTypes.object,
   history: PropTypes.object,
   location: PropTypes.object,
   match: PropTypes.object,
 };
 
-const WrappedAddUser = Form.create({
-  name: 'add_user',
-})(AddUser);
+const WrappedAddEmployee = Form.create({
+  name: 'add_employee',
+})(AddEmployee);
 
-export default WrappedAddUser;
+export default WrappedAddEmployee;

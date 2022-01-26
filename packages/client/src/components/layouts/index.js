@@ -20,9 +20,9 @@ function BaseLayout(props) {
   if (isAdmin) Layout = AdminLayout;
 
   return (
-    <div className='app'>
+    <>
       <Layout {...props} />
-    </div>
+    </>
   );
 }
 

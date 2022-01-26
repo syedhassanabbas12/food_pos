@@ -1,22 +1,48 @@
 const ROUTES = {
   ROOT: '/',
-  DASHBOARD: '/dashboard',
-
   LOGIN: '/login',
+
+  DASHBOARD: '/dashboard',
+  COMPANY_INFORMATION: '/companyinformation',
+
   FORGOT_PASSWORD: '/forgotpassword',
   RESET_PASSWORD: '/resetpassword',
 
   EDIT_PROFILE: '/editprofile',
   CHANGE_PASSWORD: '/changepassword',
 
-  ADD_USER: '/adduser',
-  LIST_USER: '/users',
+  ADD_EMPLOYEE: '/addemployee',
+  LIST_EMPLOYEES: '/employees',
 
   ADD_CUSTOMER: '/addcustomer',
   LIST_CUSTOMERS: '/customers',
 
+  ADD_SALES_ORDER: '/addsalesorder',
+  LIST_SALES_ORDERS: '/salesorders',
+
   ADD_INVOICE: '/addinvoice',
   LIST_INVOICES: '/invoices',
+
+  ADD_PAYMENT: '/addpayment',
+  LIST_PAYMENTS: '/payments',
+
+  ADD_CREDIT_MEMO: '/addcreditmemo',
+  LIST_CREDIT_MEMOS: '/creditmemos',
+
+  ADD_RETURN_AUTHORIZATION: '/addreturnauth',
+  LIST_RETURN_AUTHORIZATIONS: '/returnauths',
+
+  ADD_PURCHASE_ORDER: '/addpurchaseorder',
+  LIST_PURCHASE_ORDERS: '/purchaseorders',
+
+  ADD_VENDOR_BILL: '/addvendorbill',
+  LIST_VENDOR_BILLS: '/bills',
+
+  ADD_VENDOR_CREDIT: '/addvendorcredit',
+  LIST_VENDOR_CREDITS: '/vendorcredits',
+
+  ADD_VENDOR_AUTHORIZATION: '/addvendorbill',
+  LIST_VENDOR_AUTHOIZATIONS: '/bills',
 
   ADD_EXPENSE: '/addexpense',
   LIST_EXPENSES: '/expenses',
@@ -27,11 +53,17 @@ const ROUTES = {
   ADD_INVENTORY_TRANSFER: '/addinventorytransfer',
   LIST_INVENTORY_TRANSFERS: '/inventorytransfers',
 
+  ADD_OTHER_TRANSACTION: '/addothertransaction',
+  LIST_OTHER_TRANSACTIONS: '/othertransactions',
+
   ADD_PRODUCT: '/addproduct',
   LIST_PRODUCT: '/products',
 
-  ADD_BRANCH: '/addbranch',
-  LIST_BRANCHES: '/branches',
+  ADD_CLASS: '/addclass',
+  LIST_CLASSES: '/classes',
+
+  ADD_LOCATION: '/addlocation',
+  LIST_LOCATIONS: '/locations',
 
   ADD_DEPARTMENT: '/adddepartment',
   LIST_DEPARTMENTS: '/departments',
@@ -44,9 +76,6 @@ const ROUTES = {
 
   ADD_UNIT: '/addunit',
   LIST_UNITS: '/units',
-
-  ADD_VENDOR_BILL: '/addvendorbill',
-  LIST_VENDOR_BILLS: '/bills',
 
   SUMMARY_REPORT: '/summaryreport',
 };

@@ -15,7 +15,7 @@ import {
 import TextArea from 'antd/lib/input/TextArea';
 import Styles from '../../styles/css-in-js';
 
-function AddBranch(props) {
+function AddLocation(props) {
   const { getFieldDecorator } = props.form;
 
   const handleSubmit = (e) => {
@@ -27,7 +27,7 @@ function AddBranch(props) {
 
         const formData = new FormData();
         id && formData.append('id', id);
-        // props.actions.AddBranch(formData);
+        // props.actions.AddLocation(formData);
       }
     });
   };
@@ -37,7 +37,7 @@ function AddBranch(props) {
 
     if (location.state && location.state.comingFrom)
       history.push(location.state.comingFrom);
-    else history.push('/branches');
+    else history.push('/locations');
   };
 
   const handleReset = () => {
@@ -54,12 +54,12 @@ function AddBranch(props) {
       >
         <Row gutter={24}>
           <Col xs={24} sm={12} md={6} lg={6}>
-            <Form.Item label='Branch Name'>
+            <Form.Item label='Location Name'>
               {
                 <>
                   {getFieldDecorator('name', {
                     rules: [
-                      { required: true, message: 'Branch Name is required' },
+                      { required: true, message: 'Location Name is required' },
                     ],
                     initialValue: null,
                   })(<Input />)}
@@ -92,7 +92,7 @@ function AddBranch(props) {
           </Col>
 
           <Col xs={24} sm={12} md={6} lg={6}>
-            <Form.Item label='Is Branch Inactive'>
+            <Form.Item label='Is Location Inactive'>
               {
                 <>
                   {getFieldDecorator('isinactive', {
@@ -190,7 +190,7 @@ function AddBranch(props) {
               <Link onClick={goBack} className='btn-back'>
                 <Icon type='arrow-left' />
               </Link>
-              {'Add Branch'}
+              {'Add Location'}
             </h3>
           </span>
         }
@@ -202,15 +202,15 @@ function AddBranch(props) {
   );
 }
 
-AddBranch.propTypes = {
+AddLocation.propTypes = {
   form: PropTypes.object,
   history: PropTypes.object,
   location: PropTypes.object,
   match: PropTypes.object,
 };
 
-const WrappedAddBranch = Form.create({
-  name: 'add_branch',
-})(AddBranch);
+const WrappedAddLocation = Form.create({
+  name: 'add_location',
+})(AddLocation);
 
-export default WrappedAddBranch;
+export default WrappedAddLocation;

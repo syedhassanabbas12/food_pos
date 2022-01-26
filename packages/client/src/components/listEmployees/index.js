@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Table, Icon, Button, Card, Collapse, Form, Row, Col } from 'antd';
 import Styles from '../../styles/css-in-js';
 import EmployeeStatus from '../common/custom-component/dropdowns/employee-status';
-import BranchDropdown from '../common/custom-component/dropdowns/branch';
+import LocationDropdown from '../common/custom-component/dropdowns/location';
 import DepartmentDropdown from '../common/custom-component/dropdowns/department';
 import DesigantionDropdown from '../common/custom-component/dropdowns/designation';
 
@@ -42,14 +42,14 @@ const columns = [
     render: (text, record) => {
       return (
         <span>
-          <Link to={`/viewuser/${record.id}`}>View</Link>
+          <Link to={`/viewemployee/${record.id}`}>View</Link>
         </span>
       );
     },
   },
 ];
 
-function ListUsers(props) {
+function ListEmployees(props) {
   const pagination = {
     current: 0,
     showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
@@ -60,9 +60,9 @@ function ListUsers(props) {
     e.preventDefault();
     props.form.validateFields((err, values) => {
       if (!err) {
-        const { status, branch, department, designation } = values;
+        const { status, department, designation } = values;
         console.log(values);
-        // props.actions.getUsers();
+        // props.actions.getEmployees();
       }
     });
   };
@@ -98,11 +98,11 @@ function ListUsers(props) {
                 </Form.Item>
               </Col>
               <Col xs={24} sm={12} md={6} lg={6}>
-                <Form.Item label='Branch'>
+                <Form.Item label='Location'>
                   <>
-                    {getFieldDecorator('branch', {
+                    {getFieldDecorator('location', {
                       initialValue: null,
-                    })(<BranchDropdown />)}
+                    })(<LocationDropdown />)}
                   </>
                 </Form.Item>
               </Col>
@@ -149,18 +149,18 @@ function ListUsers(props) {
             <Link to={'/'} className='btn-back'>
               <Icon type='arrow-left' />
             </Link>
-            {'Users'}
+            {'Employees'}
           </h3>
         </span>
       }
       bordered={false}
       extra={
-        <Link to={`/adduser`}>
+        <Link to={`/addemployee`}>
           <Button
             style={{ marginLeft: 8 }}
             className='ant-btn ant-btn-primary btn-add'
           >
-            Add User
+            Add Employee
           </Button>
         </Link>
       }
@@ -184,15 +184,15 @@ function ListUsers(props) {
   );
 }
 
-ListUsers.propTypes = {
+ListEmployees.propTypes = {
   form: PropTypes.object,
   history: PropTypes.object,
   location: PropTypes.object,
   match: PropTypes.object,
 };
 
-const WrappedListUsers = Form.create({
-  name: 'list_users',
-})(ListUsers);
+const WrappedListEmployees = Form.create({
+  name: 'list_employees',
+})(ListEmployees);
 
-export default WrappedListUsers;
+export default WrappedListEmployees;

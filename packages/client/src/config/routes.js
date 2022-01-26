@@ -2,29 +2,48 @@ import Login from '../components/login';
 import ForgotPassword from '../components/forgotpassword';
 import ResetPassword from '../components/resetPassword';
 import Dashboard from '../components/dashboard';
-import AddUser from '../components/adduser';
+import CompanyInformation from '../components/companyInformation';
+import AddEmployee from '../components/addEmployee';
 import AddCustomer from '../components/addCustomer';
 import AddExpense from '../components/addExpense';
 import AddInvoice from '../components/addInvoice';
+import AddSaleOrder from '../components/addSaleOrder';
+import AddPayment from '../components/addPayment';
+import AddCreditMemo from '../components/addCreditMemo';
+import AddReturnAuthorization from '../components/addReturnAuthorization';
 import AddInventoryAdjustment from '../components/addInventoryAdjustment';
 import AddProduct from '../components/addProduct';
 import AddVendor from '../components/addVendor';
 import AddVendorBill from '../components/addVendorBill';
+import AddPurchaseOrder from '../components/addPurchaseOrder';
+import AddVendorCredit from '../components/addVendorCredit';
+import AddVendorReturn from '../components/addVendorReturn';
+import AddOtherTransaction from '../components/addOtherTransaction';
 import ChangePasswrord from '../components/changePassword';
 import EditProfile from '../components/editProfile';
 import ListCustomers from '../components/listCustomers';
 import ListExpenses from '../components/listExpenses';
 import ListInventoryAdjustments from '../components/listInventoryAdjustments';
 import ListInvoices from '../components/listInvoices';
+import ListSaleOrders from '../components/listSaleOrders';
+import ListPayments from '../components/listPayments';
+import ListCreditMemos from '../components/listCreditMemos';
+import ListReturnAuthorizations from '../components/listReturnAuthorizations';
 import ListProducts from '../components/listProducts';
-import ListUsers from '../components/listusers';
+import ListEmployees from '../components/listEmployees';
 import ListVendors from '../components/listVendors';
+import ListPurchaseOrders from '../components/listPurchaseOrders';
+import ListVendorCredits from '../components/listVendorCredits';
+import ListVendorReturns from '../components/listVendorReturns';
+import ListOtherTransactions from '../components/listOtherTransactions';
 import ListVendorBills from '../components/listVendorBills';
 import SummaryReport from '../components/summaryReport';
 import BaseLayout from '../components/layouts';
 import ROUTES from '../constants/route-constants';
-import ListBranches from '../components/listBranches';
-import AddBranch from '../components/addBranch';
+import ListClasses from '../components/listClasses';
+import AddClass from '../components/addClass';
+import ListLocations from '../components/listLocations';
+import AddLocation from '../components/addLocation';
 import AddDepartment from '../components/addDepartment';
 import ListDepartments from '../components/listDepartments';
 import ListDesignations from '../components/listDesignations';
@@ -66,9 +85,15 @@ const Routes = [
     requireAuthentication: true,
   },
   {
-    name: 'Add User',
-    path: ROUTES.ADD_USER,
-    component: AddUser,
+    name: 'Company Information',
+    path: ROUTES.COMPANY_INFORMATION,
+    component: CompanyInformation,
+    requireAuthentication: true,
+  },
+  {
+    name: 'Add Employee',
+    path: ROUTES.ADD_EMPLOYEE,
+    component: AddEmployee,
     requireAuthentication: true,
   },
   {
@@ -78,15 +103,75 @@ const Routes = [
     requireAuthentication: true,
   },
   {
+    name: 'Add Sales Order',
+    path: ROUTES.ADD_SALES_ORDER,
+    component: AddSaleOrder,
+    requireAuthentication: true,
+  },
+  {
     name: 'Add Invoice',
     path: ROUTES.ADD_INVOICE,
     component: AddInvoice,
     requireAuthentication: true,
   },
   {
+    name: 'Add Payment',
+    path: ROUTES.ADD_PAYMENT,
+    component: AddPayment,
+    requireAuthentication: true,
+  },
+  {
+    name: 'Add Credit Memo',
+    path: ROUTES.ADD_CREDIT_MEMO,
+    component: AddCreditMemo,
+    requireAuthentication: true,
+  },
+  {
+    name: 'Add Return Authorization',
+    path: ROUTES.ADD_RETURN_AUTHORIZATION,
+    component: AddReturnAuthorization,
+    requireAuthentication: true,
+  },
+  {
+    name: 'List Sale Orders',
+    path: ROUTES.LIST_SALES_ORDERS,
+    component: ListSaleOrders,
+    requireAuthentication: true,
+  },
+  {
+    name: 'List Payments',
+    path: ROUTES.LIST_PAYMENTS,
+    component: ListPayments,
+    requireAuthentication: true,
+  },
+  {
+    name: 'List Credit Memos',
+    path: ROUTES.LIST_CREDIT_MEMOS,
+    component: ListCreditMemos,
+    requireAuthentication: true,
+  },
+  {
+    name: 'List Return Authorization',
+    path: ROUTES.LIST_RETURN_AUTHORIZATIONS,
+    component: ListReturnAuthorizations,
+    requireAuthentication: true,
+  },
+  {
     name: 'Add Expense',
     path: ROUTES.ADD_EXPENSE,
     component: AddExpense,
+    requireAuthentication: true,
+  },
+  {
+    name: 'Other Transactions',
+    path: ROUTES.ADD_OTHER_TRANSACTION,
+    component: AddOtherTransaction,
+    requireAuthentication: true,
+  },
+  {
+    name: 'List Other Transactions',
+    path: ROUTES.LIST_OTHER_TRANSACTIONS,
+    component: ListOtherTransactions,
     requireAuthentication: true,
   },
   {
@@ -108,9 +193,15 @@ const Routes = [
     requireAuthentication: true,
   },
   {
-    name: 'Add Branch',
-    path: ROUTES.ADD_BRANCH,
-    component: AddBranch,
+    name: 'Add Location',
+    path: ROUTES.ADD_LOCATION,
+    component: AddLocation,
+    requireAuthentication: true,
+  },
+  {
+    name: 'Add Class',
+    path: ROUTES.ADD_CLASS,
+    component: AddClass,
     requireAuthentication: true,
   },
   {
@@ -144,6 +235,42 @@ const Routes = [
     requireAuthentication: true,
   },
   {
+    name: 'Add Purchase Order',
+    path: ROUTES.ADD_PURCHASE_ORDER,
+    component: AddPurchaseOrder,
+    requireAuthentication: true,
+  },
+  {
+    name: 'Add Vendor Credit',
+    path: ROUTES.ADD_VENDOR_AUTHORIZATION,
+    component: AddVendorCredit,
+    requireAuthentication: true,
+  },
+  {
+    name: 'Add Vendor Return',
+    path: ROUTES.ADD_VENDOR_AUTHORIZATION,
+    component: AddVendorReturn,
+    requireAuthentication: true,
+  },
+  {
+    name: 'List Purchase Orders',
+    path: ROUTES.LIST_PURCHASE_ORDERS,
+    component: ListPurchaseOrders,
+    requireAuthentication: true,
+  },
+  {
+    name: 'List Vendor Credits',
+    path: ROUTES.LIST_VENDOR_CREDITS,
+    component: ListVendorCredits,
+    requireAuthentication: true,
+  },
+  {
+    name: 'List Vendor Returns',
+    path: ROUTES.LIST_VENDOR_AUTHOIZATIONS,
+    component: ListVendorReturns,
+    requireAuthentication: true,
+  },
+  {
     name: 'Change Password',
     path: ROUTES.CHANGE_PASSWORD,
     component: ChangePasswrord,
@@ -168,9 +295,9 @@ const Routes = [
     requireAuthentication: true,
   },
   {
-    name: 'List User',
-    path: ROUTES.LIST_USER,
-    component: ListUsers,
+    name: 'List Employee',
+    path: ROUTES.LIST_EMPLOYEES,
+    component: ListEmployees,
     requireAuthentication: true,
   },
   {
@@ -186,9 +313,15 @@ const Routes = [
     requireAuthentication: true,
   },
   {
-    name: 'List Branches',
-    path: ROUTES.LIST_BRANCHES,
-    component: ListBranches,
+    name: 'List Classes',
+    path: ROUTES.LIST_CLASSES,
+    component: ListClasses,
+    requireAuthentication: true,
+  },
+  {
+    name: 'List Locations',
+    path: ROUTES.LIST_LOCATIONS,
+    component: ListLocations,
     requireAuthentication: true,
   },
   {
@@ -249,6 +382,12 @@ const SiderList = [
     icon: 'dashboard',
   },
   {
+    key: 'companyinformation',
+    text: 'Company Information',
+    to: ROUTES.COMPANY_INFORMATION,
+    icon: 'info-circle',
+  },
+  {
     key: 'list-customers',
     text: 'Customers',
     to: ROUTES.LIST_CUSTOMERS,
@@ -261,9 +400,9 @@ const SiderList = [
     icon: 'man',
   },
   {
-    key: 'list-users',
-    text: 'Users',
-    to: ROUTES.LIST_USER,
+    key: 'list-employees',
+    text: 'Employees',
+    to: ROUTES.LIST_EMPLOYEES,
     icon: 'smile-o',
   },
   {
@@ -273,16 +412,52 @@ const SiderList = [
     icon: 'tag',
   },
   {
+    key: 'list-sales-orders',
+    text: 'Sales Orders',
+    to: ROUTES.LIST_SALES_ORDERS,
+    icon: 'money-collect',
+  },
+  {
     key: 'list-invoices',
     text: 'Invoices',
     to: ROUTES.LIST_INVOICES,
-    icon: 'solution',
+    icon: 'money-collect',
+  },
+  {
+    key: 'list-credit-memos',
+    text: 'Credit Memos',
+    to: ROUTES.LIST_CREDIT_MEMOS,
+    icon: 'money-collect',
+  },
+  {
+    key: 'list-return-authorizations',
+    text: 'Return Authorizations',
+    to: ROUTES.LIST_RETURN_AUTHORIZATIONS,
+    icon: 'money-collect',
+  },
+  {
+    key: 'list-purchase-orders',
+    text: 'Purchase Orders',
+    to: ROUTES.LIST_PURCHASE_ORDERS,
+    icon: 'pay-circle',
   },
   {
     key: 'list-vendor-bills',
     text: 'Bills',
     to: ROUTES.LIST_VENDOR_BILLS,
-    icon: 'database',
+    icon: 'pay-circle',
+  },
+  {
+    key: 'list-vendor-credit',
+    text: 'Vendor Credit',
+    to: ROUTES.LIST_VENDOR_CREDITS,
+    icon: 'pay-circle',
+  },
+  {
+    key: 'list-vendor-return',
+    text: 'Vendor Return',
+    to: ROUTES.LIST_VENDOR_AUTHOIZATIONS,
+    icon: 'pay-circle',
   },
   {
     key: 'list-expenses',
@@ -303,10 +478,22 @@ const SiderList = [
     icon: 'shopping-cart',
   },
   {
-    key: 'list-branches',
-    text: 'Branches',
-    to: ROUTES.LIST_BRANCHES,
+    key: 'list-other-transactions',
+    text: 'Other Transactions',
+    to: ROUTES.LIST_OTHER_TRANSACTIONS,
+    icon: 'interaction',
+  },
+  {
+    key: 'list-classes',
+    text: 'Classes',
+    to: ROUTES.LIST_CLASSES,
     icon: 'project',
+  },
+  {
+    key: 'list-locations',
+    text: 'Locations',
+    to: ROUTES.LIST_LOCATIONS,
+    icon: 'pause',
   },
   {
     key: 'list-departments',
