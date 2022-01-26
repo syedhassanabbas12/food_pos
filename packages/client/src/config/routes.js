@@ -52,6 +52,8 @@ import AddInventoryTransfer from '../components/addInventoryTransfer';
 import ListInventoryTransfers from '../components/listInventoryTransfers';
 import AddUnit from '../components/addUnit';
 import ListUnits from '../components/listUnits';
+import AddCashSale from '../components/addCashSale';
+import ListCashSales from '../components/listCashSales';
 
 const Routes = [
   {
@@ -160,6 +162,18 @@ const Routes = [
     name: 'Add Expense',
     path: ROUTES.ADD_EXPENSE,
     component: AddExpense,
+    requireAuthentication: true,
+  },
+  {
+    name: 'Add Cash Sale',
+    path: ROUTES.ADD_CASH_SALE,
+    component: AddCashSale,
+    requireAuthentication: true,
+  },
+  {
+    name: 'Add Expense',
+    path: ROUTES.LIST_CASH_SALES,
+    component: ListCashSales,
     requireAuthentication: true,
   },
   {
@@ -421,6 +435,12 @@ const SiderList = [
     key: 'list-invoices',
     text: 'Invoices',
     to: ROUTES.LIST_INVOICES,
+    icon: 'money-collect',
+  },
+  {
+    key: 'list-cash-sales',
+    text: 'Cash Sales',
+    to: ROUTES.LIST_CASH_SALES,
     icon: 'money-collect',
   },
   {

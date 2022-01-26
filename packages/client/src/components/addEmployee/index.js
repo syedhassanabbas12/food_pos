@@ -31,7 +31,8 @@ const permissionOptions = [
   { label: 'Products', value: 'PRODUCTS' },
   { label: 'Sales Order', value: 'SALES_ORDER' },
   { label: 'Invoice', value: 'INVOICE' },
-  { label: 'Payment', value: 'CUSTOMER' },
+  { label: 'Cash Sale', value: 'CASH_SALE' },
+  { label: 'Payment', value: 'PAYMENT' },
   { label: 'Credit Memo', value: 'CREDIT_MEMO' },
   { label: 'Return Authorization', value: 'RETURN_AUTHORIZATION' },
   { label: 'Purchase Order', value: 'PURCHASE_ORDER' },
@@ -424,8 +425,6 @@ function AddEmployee(props) {
                   </Row>
                 </Checkbox.Group>
               )}
-
-              <Divider style={{ marginTop: '5px', marginBottom: '5px' }} />
             </Form.Item>
           </Col>
         </Row>

@@ -20,6 +20,9 @@ const ROUTES = {
   ADD_SALES_ORDER: '/addsalesorder',
   LIST_SALES_ORDERS: '/salesorders',
 
+  ADD_CASH_SALE: '/addcashsale',
+  LIST_CASH_SALES: '/cashsales',
+
   ADD_INVOICE: '/addinvoice',
   LIST_INVOICES: '/invoices',
 
