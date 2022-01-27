@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Menu, Icon, Typography } from 'antd';
 import { Link } from 'react-router-dom';
-import CONSTANTS from '../../constants/app-constants';
+import CONSTANTS from './../../../../constants/app-constants';
 const { ASSETS } = CONSTANTS;
 
 const { Header } = Layout;

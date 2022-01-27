@@ -7,9 +7,9 @@ import Loader from '../common/custom-component/loader';
 import ROUTES from '../../constants/route-constants';
 
 import { Routes } from '../../config/routes';
-import AppHeader from './Header';
-import Sider from './Sidebar';
-import AppFooter from './Footer';
+import AppHeader from './../common/another-component/Header';
+import Sider from './../common/another-component/Sider';
+import AppFooter from './../common/another-component/Footer';
 
 const { Content } = Layout;
 

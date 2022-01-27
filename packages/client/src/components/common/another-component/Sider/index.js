@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu, Layout, Icon } from 'antd';
 import { Link } from 'react-router-dom';
-import { SiderList } from '../../config/routes';
+import { SiderList } from './../../../../config/routes';
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
