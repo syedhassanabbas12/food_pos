@@ -21,7 +21,7 @@ const AdminLayout = () => {
   return (
     <Layout className='main-layout-wrap' hasSider={true}>
       <Sider authenticatedRoutes={authenticatedRoutes} />
-      <Layout style={{ backgroundColor: 'white' }}>
+      <Layout style={{ backgroundColor: 'white', height: "100vh", }}>
         <AppHeader />
 
         <Content className='contentMain'>
