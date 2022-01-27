@@ -13,7 +13,7 @@ import AppFooter from './Footer';
 
 const { Content } = Layout;
 
-const AdminLayout = () => {
+const BaseLayout = () => {
   const authenticatedRoutes = [
     ...Routes.filter((route) => route?.requireAuthentication),
   ];
@@ -21,7 +21,7 @@ const AdminLayout = () => {
   return (
     <Layout className='main-layout-wrap' hasSider={true}>
       <Sider authenticatedRoutes={authenticatedRoutes} />
-      <Layout style={{ backgroundColor: 'white', height: "100vh", }}>
+      <Layout style={{ backgroundColor: 'white', height: '100vh' }}>
         <AppHeader />
 
         <Content className='contentMain'>
@@ -56,4 +56,4 @@ const AdminLayout = () => {
   );
 };
 
-export default AdminLayout;
+export default BaseLayout;

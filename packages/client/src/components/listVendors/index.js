@@ -154,7 +154,7 @@ ListVendors.propTypes = {
 };
 
 const WrappedListVendors = Form.create({
-  name: 'list_vendors',
+  name: 'list_customer',
 })(ListVendors);
 
 export default WrappedListVendors;

@@ -1,67 +1,54 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {
-  Table,
-  Icon,
-  Button,
-  Card,
-  Collapse,
-  Form,
-  Row,
-  Col,
-  Space,
-  DatePicker,
-} from 'antd';
+import { Table, Icon, Button, Card, Col, Row, Collapse, Form } from 'antd';
 import Styles from '../../styles/css-in-js';
-import EntityDropdown from '../common/custom-component/dropdowns/entity';
-import TransactionTypeDropdown from '../common/custom-component/dropdowns/transaction-type';
+import PermissionsDropdown from './../common/custom-component/dropdowns/permission';
 
-const { Panel } = Collapse;
-const { RangePicker } = DatePicker;
+const Panel = Collapse.Panel;
 
 const data = [];
 const columns = [
   {
-    title: 'Id',
+    title: 'View',
     dataIndex: 'action',
     render: (text, record) => {
       return (
         <span>
-          <Link to={`/${record.id}`}>View</Link>
+          <Link to={`/viewrole/${record.id}`}>View</Link>
         </span>
       );
     },
   },
   {
-    title: 'Transaction Type',
-    dataIndex: 'type',
+    title: 'Name',
+    dataIndex: 'name',
   },
   {
-    title: 'Entity',
-    dataIndex: 'entity',
-  },
-  {
-    title: 'Date',
-    dataIndex: 'date',
-  },
-  {
-    title: 'Amount',
-    dataIndex: 'amount',
+    title: 'Permissions',
+    dataIndex: 'permissions',
   },
 ];
 
-function SummaryReport(props) {
+function ListRoles(props) {
+  const pagination = {
+    current: 0,
+    showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
+    position: 'both',
+  };
+
   const handleSubmitSearch = (e) => {
     e.preventDefault();
     props.form.validateFields((err, values) => {
       if (!err) {
+        const { status } = values;
         console.log(values);
+        // props.actions.getRoles();
       }
     });
   };
 
-  const handleReset = () => {
+  const handleReset = (props) => {
     props.form.resetFields();
   };
 
@@ -82,30 +69,12 @@ function SummaryReport(props) {
             onSubmit={handleSubmitSearch}
           >
             <Row gutter={24}>
-              <Col xs={24} sm={12} md={6} lg={6}>
-                <Form.Item label='Transaction Type'>
+              <Col xs={24} sm={16} md={9} lg={9}>
+                <Form.Item label='Status'>
                   <>
                     {getFieldDecorator('status', {
                       initialValue: null,
-                    })(<TransactionTypeDropdown />)}
-                  </>
-                </Form.Item>
-              </Col>
-              <Col xs={24} sm={12} md={6} lg={6}>
-                <Form.Item label='Entity'>
-                  <>
-                    {getFieldDecorator('status', {
-                      initialValue: null,
-                    })(<EntityDropdown />)}
-                  </>
-                </Form.Item>
-              </Col>
-              <Col xs={24} sm={12} md={6} lg={6}>
-                <Form.Item label='Date'>
-                  <>
-                    {getFieldDecorator('datetime', {
-                      initialValue: null,
-                    })(<RangePicker showTime />)}
+                    })(<PermissionsDropdown />)}
                   </>
                 </Form.Item>
               </Col>
@@ -125,6 +94,7 @@ function SummaryReport(props) {
       </Collapse>
     );
   };
+
   return (
     <Card
       style={Styles.cardBottomMargin}
@@ -134,49 +104,49 @@ function SummaryReport(props) {
             <Link to={'/'} className='btn-back'>
               <Icon type='arrow-left' />
             </Link>
-            {'Summary Report'}
+            {'Roles'}
           </h3>
         </span>
       }
       bordered={false}
       extra={
-        <Button
-          style={{ marginLeft: 8 }}
-          className='ant-btn ant-btn-primary btn-add'
-          onClick={() => {
-            console.log('click download report');
-          }}
-        >
-          Download Report
-        </Button>
+        <Link to={`/addrole`}>
+          <Button
+            style={{ marginLeft: 8 }}
+            className='ant-btn ant-btn-primary btn-add'
+          >
+            Add Role
+          </Button>
+        </Link>
       }
     >
       <div>
         {renderAdvanceSearch()}
-
         <Table
           columns={columns}
           rowKey={(record) => record.id}
           dataSource={data}
+          pagination={pagination}
           loading={false}
           onChange={() => {
             console.log('Table Changed');
           }}
-          pagination={false}
           bordered
-          footer={() => 'Footer'}
         />
       </div>
     </Card>
   );
 }
 
-SummaryReport.propTypes = {
+ListRoles.propTypes = {
   form: PropTypes.object,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
 };
 
-const WrappedSummaryReport = Form.create({
-  name: 'summary_report',
-})(SummaryReport);
+const WrappedListRoles = Form.create({
+  name: 'list_roles',
+})(ListRoles);
 
-export default WrappedSummaryReport;
+export default WrappedListRoles;

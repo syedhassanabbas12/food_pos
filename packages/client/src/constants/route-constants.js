@@ -14,6 +14,9 @@ const ROUTES = {
   ADD_EMPLOYEE: '/addemployee',
   LIST_EMPLOYEES: '/employees',
 
+  ADD_ROLE: '/addrole',
+  LIST_ROLES: '/roles',
+
   ADD_CUSTOMER: '/addcustomer',
   LIST_CUSTOMERS: '/customers',
 

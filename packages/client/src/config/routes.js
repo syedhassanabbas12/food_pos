@@ -38,7 +38,7 @@ import ListVendorReturns from '../components/listVendorReturns';
 import ListOtherTransactions from '../components/listOtherTransactions';
 import ListVendorBills from '../components/listVendorBills';
 import SummaryReport from '../components/summaryReport';
-import BaseLayout from '../components/layouts';
+import BaseLayout from '../components/layouts/BaseLayout';
 import ROUTES from '../constants/route-constants';
 import ListClasses from '../components/listClasses';
 import AddClass from '../components/addClass';
@@ -54,6 +54,8 @@ import AddUnit from '../components/addUnit';
 import ListUnits from '../components/listUnits';
 import AddCashSale from '../components/addCashSale';
 import ListCashSales from '../components/listCashSales';
+import AddRole from '../components/addRole';
+import ListRoles from '../components/listRoles';
 
 const Routes = [
   {
@@ -237,6 +239,12 @@ const Routes = [
     requireAuthentication: true,
   },
   {
+    name: 'Add Role',
+    path: ROUTES.ADD_ROLE,
+    component: AddRole,
+    requireAuthentication: true,
+  },
+  {
     name: 'Add Vendor',
     path: ROUTES.ADD_VENDOR,
     component: AddVendor,
@@ -357,6 +365,12 @@ const Routes = [
     requireAuthentication: true,
   },
   {
+    name: 'List Roles',
+    path: ROUTES.LIST_ROLES,
+    component: ListRoles,
+    requireAuthentication: true,
+  },
+  {
     name: 'List Vendor Bills',
     path: ROUTES.LIST_VENDOR_BILLS,
     component: ListVendorBills,
@@ -398,13 +412,19 @@ const SiderList = [
   {
     key: 'setup',
     text: 'Setup',
-    icon: 'info-circle',
+    icon: 'setting',
     subMenus: [
       {
         key: 'companyinformation',
         text: 'Company Information',
         to: ROUTES.COMPANY_INFORMATION,
         icon: 'info-circle',
+      },
+      {
+        key: 'roles',
+        text: 'Roles',
+        to: ROUTES.LIST_ROLES,
+        icon: 'block',
       },
       {
         key: 'list-classes',
@@ -436,7 +456,7 @@ const SiderList = [
         to: ROUTES.LIST_UNITS,
         icon: 'number',
       },
-    ]
+    ],
   },
   {
     key: 'list-customers',
@@ -480,7 +500,7 @@ const SiderList = [
         to: ROUTES.LIST_INVENTORY_TRANSFERS,
         icon: 'shopping-cart',
       },
-    ]
+    ],
   },
   {
     key: 'list-sales-orders',
