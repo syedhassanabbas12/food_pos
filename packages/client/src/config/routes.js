@@ -396,10 +396,47 @@ const SiderList = [
     icon: 'dashboard',
   },
   {
-    key: 'companyinformation',
-    text: 'Company Information',
-    to: ROUTES.COMPANY_INFORMATION,
+    key: 'setup',
+    text: 'Setup',
     icon: 'info-circle',
+    subMenus: [
+      {
+        key: 'companyinformation',
+        text: 'Company Information',
+        to: ROUTES.COMPANY_INFORMATION,
+        icon: 'info-circle',
+      },
+      {
+        key: 'list-classes',
+        text: 'Classes',
+        to: ROUTES.LIST_CLASSES,
+        icon: 'project',
+      },
+      {
+        key: 'list-locations',
+        text: 'Locations',
+        to: ROUTES.LIST_LOCATIONS,
+        icon: 'pause',
+      },
+      {
+        key: 'list-departments',
+        text: 'Departments',
+        to: ROUTES.LIST_DEPARTMENTS,
+        icon: 'key',
+      },
+      {
+        key: 'list-designations',
+        text: 'Designations',
+        to: ROUTES.LIST_DESIGNATIONS,
+        icon: 'appstore',
+      },
+      {
+        key: 'list-units',
+        text: 'Units',
+        to: ROUTES.LIST_UNITS,
+        icon: 'number',
+      },
+    ]
   },
   {
     key: 'list-customers',
@@ -422,8 +459,28 @@ const SiderList = [
   {
     key: 'list-products',
     text: 'Products',
-    to: ROUTES.LIST_PRODUCT,
+    // to: ROUTES.LIST_PRODUCT,
     icon: 'tag',
+    subMenus: [
+      {
+        key: 'list-products',
+        text: 'Items',
+        to: ROUTES.LIST_PRODUCT,
+        icon: 'tag',
+      },
+      {
+        key: 'adjust-inventoty',
+        text: 'Adjust Inventory',
+        to: ROUTES.LIST_INVENTORY_ADJUSTMENTS,
+        icon: 'calculator',
+      },
+      {
+        key: 'inventoty-transfer',
+        text: 'Transfer Inventory',
+        to: ROUTES.LIST_INVENTORY_TRANSFERS,
+        icon: 'shopping-cart',
+      },
+    ]
   },
   {
     key: 'list-sales-orders',
@@ -486,52 +543,10 @@ const SiderList = [
     icon: 'exception',
   },
   {
-    key: 'adjust-inventoty',
-    text: 'Adjust Inventory',
-    to: ROUTES.LIST_INVENTORY_ADJUSTMENTS,
-    icon: 'calculator',
-  },
-  {
-    key: 'inventoty-transfer',
-    text: 'Transfer Inventory',
-    to: ROUTES.LIST_INVENTORY_TRANSFERS,
-    icon: 'shopping-cart',
-  },
-  {
     key: 'list-other-transactions',
     text: 'Other Transactions',
     to: ROUTES.LIST_OTHER_TRANSACTIONS,
     icon: 'interaction',
-  },
-  {
-    key: 'list-classes',
-    text: 'Classes',
-    to: ROUTES.LIST_CLASSES,
-    icon: 'project',
-  },
-  {
-    key: 'list-locations',
-    text: 'Locations',
-    to: ROUTES.LIST_LOCATIONS,
-    icon: 'pause',
-  },
-  {
-    key: 'list-departments',
-    text: 'Departments',
-    to: ROUTES.LIST_DEPARTMENTS,
-    icon: 'key',
-  },
-  {
-    key: 'list-designations',
-    text: 'Designations',
-    to: ROUTES.LIST_DESIGNATIONS,
-    icon: 'appstore',
-  },
-  {
-    key: 'list-units',
-    text: 'Units',
-    to: ROUTES.LIST_UNITS,
-    icon: 'number',
   },
   {
     key: 'summary-report',
