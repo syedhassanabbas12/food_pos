@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
@@ -11,80 +11,22 @@ import {
   Button,
   Input,
   DatePicker,
-  Checkbox,
 } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import EmployeeStatusDropdown from '../common/custom-component/dropdowns/employee-status';
 import MaritalStatusDropdown from '../common/custom-component/dropdowns/marital-status';
+import RoleDropdown from '../common/custom-component/dropdowns/roles';
 import GenderDropdown from '../common/custom-component/dropdowns/gender';
 import DepartmentDropdown from '../common/custom-component/dropdowns/department';
 import DesignationDropdown from '../common/custom-component/dropdowns/designation';
+import ClassDropdown from '../common/custom-component/dropdowns/class';
 import LocationDropdown from '../common/custom-component/dropdowns/location';
 import NationalityDropdown from '../common/custom-component/dropdowns/nationality';
+import BloodGroupDropdown from '../common/custom-component/dropdowns/bloodgroup';
 import Styles from '../../styles/css-in-js';
-
-const permissionOptions = [
-  { label: 'Dashboard', value: 'DASHBOARD', disabled: true },
-  { label: 'My Profile', value: 'EMPLOYEE_PROFILE', disabled: true },
-  { label: 'Employee', value: 'EMPLOYEE' },
-  { label: 'Customer', value: 'CUSTOMER' },
-  { label: 'Products', value: 'PRODUCTS' },
-  { label: 'Sales Order', value: 'SALES_ORDER' },
-  { label: 'Invoice', value: 'INVOICE' },
-  { label: 'Cash Sale', value: 'CASH_SALE' },
-  { label: 'Payment', value: 'PAYMENT' },
-  { label: 'Credit Memo', value: 'CREDIT_MEMO' },
-  { label: 'Return Authorization', value: 'RETURN_AUTHORIZATION' },
-  { label: 'Purchase Order', value: 'PURCHASE_ORDER' },
-  { label: 'Bill', value: 'BILL' },
-  { label: 'Vendor Credit', value: 'VENDOR_CREDIT' },
-  {
-    label: 'Vendor Return Authorization',
-    value: 'VENDOR_RETURN_AUTHORIZATION',
-  },
-  { label: 'Expense', value: 'EXPENSE' },
-  { label: 'Inventory', value: 'INVENTORY' },
-  { label: 'Class', value: 'CLASS' },
-  { label: 'Location', value: 'LOCATION' },
-  { label: 'Department', value: 'DEPARTMENT' },
-  { label: 'Designation', value: 'DESIGNATION' },
-  { label: 'Unit', value: 'UNIT' },
-  { label: 'Report', value: 'REPORT' },
-];
-
-const disabledAndSelected = ['DASHBOARD', 'EMPLOYEE_PROFILE'];
 
 function AddEmployee(props) {
   const { getFieldDecorator } = props.form;
-  const initialCheckedList = [...disabledAndSelected];
-  const intialState = {
-    checkedList: initialCheckedList,
-    indeterminate:
-      !!initialCheckedList.length &&
-      initialCheckedList.length < permissionOptions.length,
-    checkAll: initialCheckedList.length === permissionOptions.length,
-  };
-  const [state, setState] = useState(intialState);
-
-  const onChange = (checkedList) => {
-    setState({
-      ...state,
-      checkedList,
-      indeterminate:
-        !!checkedList.length && checkedList.length < permissionOptions.length,
-      checkAll: checkedList.length === permissionOptions.length,
-    });
-  };
-  const onCheckAllChange = (e) => {
-    setState({
-      ...state,
-      checkedList: e.target.checked
-        ? permissionOptions.map((option) => option.value)
-        : disabledAndSelected,
-      indeterminate: false,
-      checkAll: e.target.checked,
-    });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -168,24 +110,26 @@ function AddEmployee(props) {
             </Form.Item>
           </Col>
           <Col xs={24} sm={12} md={6} lg={6}>
-            <Form.Item label='Gender'>
+            <Form.Item label='Role'>
               {
                 <>
-                  {getFieldDecorator('gender', {
-                    rules: [{ required: true, message: 'Gender is required' }],
-                    initialValue: '',
-                  })(<GenderDropdown />)}
+                  {getFieldDecorator('role', {
+                    rules: [{ required: true, message: 'Role is required' }],
+                    initialValue: null,
+                  })(<RoleDropdown />)}
                 </>
               }
             </Form.Item>
           </Col>
           <Col xs={24} sm={12} md={6} lg={6}>
-            <Form.Item label='Marital Status'>
+            <Form.Item label='Status'>
               {
                 <>
-                  {getFieldDecorator('maritalstatus', {
+                  {getFieldDecorator('status', {
+                    rules: [{ required: true, message: 'Status is required' }],
+
                     initialValue: null,
-                  })(<MaritalStatusDropdown />)}
+                  })(<EmployeeStatusDropdown />)}
                 </>
               }
             </Form.Item>
@@ -235,12 +179,13 @@ function AddEmployee(props) {
             </Form.Item>
           </Col>
           <Col xs={24} sm={12} md={6} lg={6}>
-            <Form.Item label='Status'>
+            <Form.Item label='Class'>
               {
                 <>
-                  {getFieldDecorator('status', {
-                    initialValue: null,
-                  })(<EmployeeStatusDropdown />)}
+                  {getFieldDecorator('class', {
+                    rules: [{ required: true, message: 'Class is required' }],
+                    initialValue: '',
+                  })(<ClassDropdown />)}
                 </>
               }
             </Form.Item>
@@ -274,24 +219,28 @@ function AddEmployee(props) {
               }
             </Form.Item>
           </Col>
+
           <Col xs={24} sm={12} md={6} lg={6}>
-            <Form.Item label='Phone'>
+            <Form.Item label='Gender'>
               {
                 <>
-                  {getFieldDecorator('phone', {
-                    initialValue: null,
-                  })(<Input />)}
+                  {getFieldDecorator('gender', {
+                    rules: [{ required: true, message: 'Gender is required' }],
+                    initialValue: '',
+                  })(<GenderDropdown />)}
                 </>
               }
             </Form.Item>
           </Col>
           <Col xs={24} sm={12} md={6} lg={6}>
-            <Form.Item label='Nationality'>
+            <Form.Item label='Phone'>
               {
                 <>
-                  {getFieldDecorator('nationality', {
+                  {getFieldDecorator('phone', {
+                    rules: [{ required: true, message: 'Phone is required' }],
+
                     initialValue: null,
-                  })(<NationalityDropdown />)}
+                  })(<Input />)}
                 </>
               }
             </Form.Item>
@@ -373,11 +322,24 @@ function AddEmployee(props) {
                 <>
                   {getFieldDecorator('bloodgroup', {
                     initialValue: null,
-                  })(<Input />)}
+                  })(<BloodGroupDropdown />)}
                 </>
               }
             </Form.Item>
           </Col>
+          <Col xs={24} sm={12} md={6} lg={6}>
+            <Form.Item label='Marital Status'>
+              {
+                <>
+                  {getFieldDecorator('maritalstatus', {
+                    initialValue: null,
+                  })(<MaritalStatusDropdown />)}
+                </>
+              }
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={24}>
           <Col xs={24} sm={12} md={6} lg={6}>
             <Form.Item label='Termination Date'>
               {
@@ -389,42 +351,15 @@ function AddEmployee(props) {
               }
             </Form.Item>
           </Col>
-        </Row>
-        <Row gutter={24}>
-          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <Form.Item name='allowed_features' label='Allowed Features'>
-              <Checkbox
-                indeterminate={state.indeterminate}
-                onChange={onCheckAllChange}
-                checked={state.checkAll}
-              >
-                Check all features
-              </Checkbox>
-
-              <Divider style={{ marginTop: '5px', marginBottom: '5px' }} />
-
-              {getFieldDecorator('features', {
-                initialValue: state.checkedList,
-                valuePropName: 'defaultValue',
-              })(
-                <Checkbox.Group value={state.checkedList} onChange={onChange}>
-                  <Row gutter={32}>
-                    {permissionOptions.map((option, index) => {
-                      return (
-                        <Col span={6} key={index}>
-                          <Checkbox
-                            key={option.value}
-                            value={option.value}
-                            disabled={option.disabled}
-                          >
-                            {option.label}
-                          </Checkbox>
-                        </Col>
-                      );
-                    })}
-                  </Row>
-                </Checkbox.Group>
-              )}
+          <Col xs={24} sm={12} md={6} lg={6}>
+            <Form.Item label='Nationality'>
+              {
+                <>
+                  {getFieldDecorator('nationality', {
+                    initialValue: null,
+                  })(<NationalityDropdown />)}
+                </>
+              }
             </Form.Item>
           </Col>
         </Row>

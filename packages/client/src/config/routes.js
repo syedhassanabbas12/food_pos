@@ -56,6 +56,8 @@ import AddCashSale from '../components/addCashSale';
 import ListCashSales from '../components/listCashSales';
 import AddRole from '../components/addRole';
 import ListRoles from '../components/listRoles';
+import AddTenant from '../components/addTenant';
+import ListTenants from '../components/listTenants';
 
 const Routes = [
   {
@@ -86,6 +88,12 @@ const Routes = [
     name: 'Dashboard',
     path: ROUTES.DASHBOARD,
     component: Dashboard,
+    requireAuthentication: true,
+  },
+  {
+    name: 'Add Tenant',
+    path: ROUTES.ADD_TENANT,
+    component: AddTenant,
     requireAuthentication: true,
   },
   {
@@ -140,6 +148,12 @@ const Routes = [
     name: 'List Sale Orders',
     path: ROUTES.LIST_SALES_ORDERS,
     component: ListSaleOrders,
+    requireAuthentication: true,
+  },
+  {
+    name: 'List Tenants',
+    path: ROUTES.LIST_TENANTS,
+    component: ListTenants,
     requireAuthentication: true,
   },
   {
@@ -408,6 +422,12 @@ const SiderList = [
     text: 'Dashboard',
     to: ROUTES.DASHBOARD,
     icon: 'dashboard',
+  },
+  {
+    key: 'tenant',
+    text: 'Tenants',
+    to: ROUTES.LIST_TENANTS,
+    icon: 'plus-circle',
   },
   {
     key: 'setup',

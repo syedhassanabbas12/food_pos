@@ -1,19 +1,16 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React from 'react';
 import { Select } from 'antd';
 
 const { Option } = Select;
 
-const Permission = (props) => {
-  const [OPTIONS] = useState(['ADD', 'VIEW', 'LIST', 'UPDATE', 'DELETE']);
-
+const Classs = (props) => {
   return (
     <Select
       {...props}
       showSearch
-      mode='multiple'
       style={{ width: '100%' }}
-      placeholder={props.placeholder ? props.placeholder : 'Select Permission'}
+      placeholder='Type to Search'
       optionFilterProp='children'
       allowClear
       filterOption={(input, option) =>
@@ -25,15 +22,11 @@ const Permission = (props) => {
           .localeCompare(optionB.children.toLowerCase())
       }
     >
-      {OPTIONS.map((item) => {
-        return (
-          <Option key={item} value={item}>
-            {item}
-          </Option>
-        );
-      })}
+      <Option value='1'>Class 1</Option>
+      <Option value='2'>Class 2</Option>
+      <Option value='3'>Class 3</Option>
     </Select>
   );
 };
 
-export default Permission;
+export default Classs;

@@ -13,7 +13,7 @@ BizChart.setTheme(BizTheme);
 
 function App() {
   return (
-    <div className='hrms-style'>
+    <div className='app-style'>
       <Router>
         <AppRouter />
       </Router>

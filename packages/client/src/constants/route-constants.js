@@ -11,6 +11,9 @@ const ROUTES = {
   EDIT_PROFILE: '/editprofile',
   CHANGE_PASSWORD: '/changepassword',
 
+  ADD_TENANT: '/addtenant',
+  LIST_TENANTS: '/tenants',
+
   ADD_EMPLOYEE: '/addemployee',
   LIST_EMPLOYEES: '/employees',
 
