@@ -16,4 +16,6 @@ export default {
     FAVICON: 'favicon.ico',
     COMPANY_LOGO: 'folio3_logo.png',
   },
+
+  MOBILE_WIDTH: 768,
 };

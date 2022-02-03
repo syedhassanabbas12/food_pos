@@ -74,7 +74,7 @@ h2 {
 
 // Setting react app into Netsuite
 div#pageContainer {
-  table[role="presentation"] td {
+  table[role='presentation'] td {
     padding: 0px;
   }
 
@@ -228,6 +228,10 @@ input.small {
   padding-left: 18px !important;
   color: rgba(255, 255, 255, 0.8);
 }
+
+.ant-menu-submenu-title > .submenu-title-wrapper {
+  color: rgba(0, 0, 0, 0.65);
+}
 .ant-menu-dark .ant-menu-item,
 .ant-menu-dark .ant-menu-item-group-title,
 .ant-menu-dark .ant-menu-item > a {
@@ -239,6 +243,25 @@ input.small {
   vertical-align: middle;
   display: flex;
   align-items: center;
+}
+
+.editable-cell {
+  position: relative;
+}
+
+.editable-cell-value-wrap {
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.editable-row:hover .editable-cell-value-wrap {
+  padding: 4px 11px;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+}
+
+[data-theme='dark'] .editable-row:hover .editable-cell-value-wrap {
+  border: 1px solid #434343;
 }
 
 .ant-layout-sider-zero-width-trigger,
@@ -349,8 +372,8 @@ input.small {
 }
 
 .ant-select-selection,
-input[type="text"],
-input[type="password"],
+input[type='text'],
+input[type='password'],
 select,
 textarea,
 .ant-input,
@@ -888,7 +911,7 @@ th.deduction {
   }
 
   .ant-layout-sider-children:after {
-    content: "";
+    content: '';
     height: 32px;
     display: block;
   }
@@ -917,7 +940,7 @@ th.deduction {
   }
 
   .ant-layout-sider-children:after {
-    content: "";
+    content: '';
     height: 16px;
     display: block;
   }
