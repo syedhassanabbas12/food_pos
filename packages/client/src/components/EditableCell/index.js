@@ -14,6 +14,7 @@ const EditableCell = (props) => {
     editable,
     FieldType,
     index,
+    disabled,
     EditableContext,
     placeholder,
     ...restProps
@@ -44,6 +45,7 @@ const EditableCell = (props) => {
           <FieldType
             ref={input}
             placeholder={placeholder}
+            disabled={disabled}
             onPressEnter={save}
             onBlur={save}
           />

@@ -16,7 +16,7 @@ import {
   notification,
 } from 'antd';
 import Styles from '../../styles/css-in-js';
-import EditableCell from './EditableCell';
+import EditableCell from '../EditableCell';
 
 const EditableContext = React.createContext();
 
@@ -223,6 +223,7 @@ function AddUnit(props) {
         handleSave: handleSave,
         EditableContext: EditableContext,
         placeholder: col.placeholder,
+        disabled: col.disabled,
         FieldType: col.fieldType,
       }),
     };

@@ -1,0 +1,13 @@
+
+{
+    "eslint.format.enable": true,
+    "eslint.run": "onSave",
+    "emmet.includeLanguages": {
+        "javscript": "javascriptreact"
+    },
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#20236F",
+        "titleBar.activeBackground": "#2C319C",
+        "titleBar.activeForeground": "#FCFCFE"
+    }
+}
