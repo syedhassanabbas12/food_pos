@@ -1,3 +1,5 @@
+import ROUTES from '../constants/route-constants';
+
 import Login from '../components/login';
 import ForgotPassword from '../components/forgotpassword';
 import ResetPassword from '../components/resetPassword';
@@ -8,7 +10,6 @@ import AddCustomer from '../components/addCustomer';
 import AddExpense from '../components/addExpense';
 import AddInvoice from '../components/addInvoice';
 import AddSaleOrder from '../components/addSaleOrder';
-import AddPayment from '../components/addPayment';
 import AddCreditMemo from '../components/addCreditMemo';
 import AddReturnAuthorization from '../components/addReturnAuthorization';
 import AddInventoryAdjustment from '../components/addInventoryAdjustment';
@@ -26,7 +27,6 @@ import ListExpenses from '../components/listExpenses';
 import ListInventoryAdjustments from '../components/listInventoryAdjustments';
 import ListInvoices from '../components/listInvoices';
 import ListSaleOrders from '../components/listSaleOrders';
-import ListPayments from '../components/listPayments';
 import ListCreditMemos from '../components/listCreditMemos';
 import ListReturnAuthorizations from '../components/listReturnAuthorizations';
 import ListProducts from '../components/listProducts';
@@ -39,7 +39,6 @@ import ListOtherTransactions from '../components/listOtherTransactions';
 import ListVendorBills from '../components/listVendorBills';
 import SummaryReport from '../components/summaryReport';
 import BaseLayout from '../components/layouts/BaseLayout';
-import ROUTES from '../constants/route-constants';
 import ListClasses from '../components/listClasses';
 import AddClass from '../components/addClass';
 import ListLocations from '../components/listLocations';
@@ -58,6 +57,8 @@ import AddRole from '../components/addRole';
 import ListRoles from '../components/listRoles';
 import AddTenant from '../components/addTenant';
 import ListTenants from '../components/listTenants';
+import ListExpenseCatgories from '../components/listExpenseCategories';
+import AddExpenseCategory from '../components/addExpenseCategory';
 
 const Routes = [
   {
@@ -127,12 +128,6 @@ const Routes = [
     requireAuthentication: true,
   },
   {
-    name: 'Add Payment',
-    path: ROUTES.ADD_PAYMENT,
-    component: AddPayment,
-    requireAuthentication: true,
-  },
-  {
     name: 'Add Credit Memo',
     path: ROUTES.ADD_CREDIT_MEMO,
     component: AddCreditMemo,
@@ -154,12 +149,6 @@ const Routes = [
     name: 'List Tenants',
     path: ROUTES.LIST_TENANTS,
     component: ListTenants,
-    requireAuthentication: true,
-  },
-  {
-    name: 'List Payments',
-    path: ROUTES.LIST_PAYMENTS,
-    component: ListPayments,
     requireAuthentication: true,
   },
   {
@@ -271,6 +260,12 @@ const Routes = [
     requireAuthentication: true,
   },
   {
+    name: 'Add Expense Category',
+    path: ROUTES.ADD_EXPENSE_CATEGORY,
+    component: AddExpenseCategory,
+    requireAuthentication: true,
+  },
+  {
     name: 'Add Purchase Order',
     path: ROUTES.ADD_PURCHASE_ORDER,
     component: AddPurchaseOrder,
@@ -278,7 +273,7 @@ const Routes = [
   },
   {
     name: 'Add Vendor Credit',
-    path: ROUTES.ADD_VENDOR_AUTHORIZATION,
+    path: ROUTES.ADD_VENDOR_CREDIT,
     component: AddVendorCredit,
     requireAuthentication: true,
   },
@@ -352,6 +347,12 @@ const Routes = [
     name: 'List Classes',
     path: ROUTES.LIST_CLASSES,
     component: ListClasses,
+    requireAuthentication: true,
+  },
+  {
+    name: 'List Expense Categories',
+    path: ROUTES.LIST_EXPENSE_CATEGORIES,
+    component: ListExpenseCatgories,
     requireAuthentication: true,
   },
   {
@@ -475,6 +476,12 @@ const SiderList = [
         text: 'Units',
         to: ROUTES.LIST_UNITS,
         icon: 'number',
+      },
+      {
+        key: 'list-expense-categories',
+        text: 'Expense Category',
+        to: ROUTES.LIST_EXPENSE_CATEGORIES,
+        icon: 'account-book',
       },
     ],
   },

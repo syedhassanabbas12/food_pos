@@ -8,7 +8,6 @@ const permissions = [
   { label: 'Sales Order', value: 'SALES_ORDER' },
   { label: 'Invoice', value: 'INVOICE' },
   { label: 'Cash Sale', value: 'CASH_SALE' },
-  { label: 'Payment', value: 'PAYMENT' },
   { label: 'Credit Memo', value: 'CREDIT_MEMO' },
   { label: 'Return Authorization', value: 'RETURN_AUTHORIZATION' },
   { label: 'Purchase Order', value: 'PURCHASE_ORDER' },

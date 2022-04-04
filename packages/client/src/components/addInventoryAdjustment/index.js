@@ -104,18 +104,31 @@ function AddInventoryAdjustment(props) {
       dataIndex: 'operation',
       render: (text, record) =>
         dataSource?.length >= 1 ? (
-          <Popconfirm
-            title='Sure to delete?'
-            onConfirm={() => handleDelete(record?.key)}
-          >
-            <a>Delete</a>
-          </Popconfirm>
+          <>
+            <Popconfirm
+              title='Sure to delete?'
+              onConfirm={() => handleDelete(record?.key)}
+            >
+              <a>Delete</a>
+            </Popconfirm>
+
+            <Popconfirm
+              title='Sure to copy?'
+              onConfirm={() => handleCopy(record?.key)}
+            >
+              <a style={{ marginLeft: 10 }}>Copy</a>
+            </Popconfirm>
+          </>
         ) : null,
     },
   ];
 
   const handleDelete = (key) =>
     setDataSource(dataSource?.filter((item) => item?.key !== key));
+
+  const handleCopy = () => {
+    console.log('handleCopy');
+  };
   const urlParams = new URLSearchParams(props.location.search);
   const selectedTab = urlParams.get('tab') || 'adjustments';
 
@@ -182,6 +195,10 @@ function AddInventoryAdjustment(props) {
     const newData = {};
     setDataSource([...dataSource, newData]);
     setcount((val) => val + 1);
+  };
+
+  const handleRemoveAll = () => {
+    console.log('handleRemoveAll');
   };
 
   const renderForm = () => {
@@ -329,16 +346,36 @@ function AddInventoryAdjustment(props) {
   const renderadjustmentsTab = () => {
     return (
       <TabPane tab='Adjustments' key='adjustments'>
-        <Button onClick={handleAdd} type='primary' style={{ marginBottom: 16 }}>
-          Add Adjustment Line
-        </Button>
-        <Table
-          components={components}
-          rowClassName={() => 'editable-row'}
-          bordered
-          dataSource={dataSource}
-          columns={finalColumns}
-        />
+        <Row gutter={24}>
+          <Col span={24} className='btns-grp' style={{ marginBottom: 12 }}>
+            <Button
+              style={{ marginLeft: 8 }}
+              onClick={handleAdd}
+              type='primary'
+            >
+              Add Adjustment
+            </Button>
+
+            <Button
+              style={{ marginLeft: 8 }}
+              onClick={handleRemoveAll}
+              type='primary'
+            >
+              Remove all
+            </Button>
+          </Col>
+        </Row>
+        <Row gutter={24}>
+          <Col span={24}>
+            <Table
+              components={components}
+              rowClassName={() => 'editable-row'}
+              bordered
+              dataSource={dataSource}
+              columns={finalColumns}
+            />
+          </Col>
+        </Row>
       </TabPane>
     );
   };

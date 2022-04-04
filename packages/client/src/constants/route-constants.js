@@ -32,9 +32,6 @@ const ROUTES = {
   ADD_INVOICE: '/addinvoice',
   LIST_INVOICES: '/invoices',
 
-  ADD_PAYMENT: '/addpayment',
-  LIST_PAYMENTS: '/payments',
-
   ADD_CREDIT_MEMO: '/addcreditmemo',
   LIST_CREDIT_MEMOS: '/creditmemos',
 
@@ -45,16 +42,19 @@ const ROUTES = {
   LIST_PURCHASE_ORDERS: '/purchaseorders',
 
   ADD_VENDOR_BILL: '/addvendorbill',
-  LIST_VENDOR_BILLS: '/bills',
+  LIST_VENDOR_BILLS: '/vendorbills',
 
   ADD_VENDOR_CREDIT: '/addvendorcredit',
   LIST_VENDOR_CREDITS: '/vendorcredits',
 
-  ADD_VENDOR_AUTHORIZATION: '/addvendorbill',
-  LIST_VENDOR_AUTHOIZATIONS: '/bills',
+  ADD_VENDOR_AUTHORIZATION: '/addvendorauth',
+  LIST_VENDOR_AUTHOIZATIONS: '/listvendorauth',
 
   ADD_EXPENSE: '/addexpense',
   LIST_EXPENSES: '/expenses',
+
+  ADD_EXPENSE_CATEGORY: '/addexpensecategory',
+  LIST_EXPENSE_CATEGORIES: '/expensecategories',
 
   ADD_INVENTORY_ADJUSTMENT: '/addinventoryadjustment',
   LIST_INVENTORY_ADJUSTMENTS: '/inventoryadjustments',

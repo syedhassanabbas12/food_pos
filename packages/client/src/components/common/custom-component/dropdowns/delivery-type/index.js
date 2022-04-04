@@ -4,13 +4,13 @@ import { Select } from 'antd';
 
 const { Option } = Select;
 
-const TransactionType = (props) => {
+const DeliveryType = (props) => {
   return (
     <Select
       {...props}
       showSearch
       style={{ width: '100%' }}
-      placeholder='Transaction'
+      placeholder='Delivery Type'
       optionFilterProp='children'
       allowClear
       filterOption={(input, option) =>
@@ -22,35 +22,17 @@ const TransactionType = (props) => {
           .localeCompare(optionB.children.toLowerCase())
       }
     >
-      <Option value='0' key='0'>
-        - All -
+      <Option value='1' key='1'>
+        Dine in
       </Option>
       <Option value='2' key='2'>
-        Cash Sale
+        Take Away
       </Option>
       <Option value='3' key='3'>
-        Credit Memo
-      </Option>
-      <Option value='4' key='4'>
-        Return Authorization
-      </Option>
-      <Option value='5' key='5'>
-        Bills
-      </Option>
-      <Option value='6' key='6'>
-        Vendor Credit
-      </Option>
-      <Option value='7' key='7'>
-        Vendor Return
-      </Option>
-      <Option value='8' key='8'>
-        Expense
-      </Option>
-      <Option value='9' key='9'>
-        Other Transactions
+        Delivery
       </Option>
     </Select>
   );
 };
 
-export default TransactionType;
+export default DeliveryType;
