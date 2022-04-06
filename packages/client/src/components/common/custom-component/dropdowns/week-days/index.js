@@ -3,13 +3,23 @@ import { Select } from 'antd';
 
 const { Option } = Select;
 
-const Subunits = (props) => {
+const daysList = [
+  { name: 'Monday', value: '0' },
+  { name: 'Tuesday', value: '1' },
+  { name: 'Wednesday', value: '2' },
+  { name: 'Thursday', value: '3' },
+  { name: 'Friday', value: '4' },
+  { name: 'Saturday', value: '5' },
+  { name: 'Sunday', value: '6' },
+];
+
+const WeekDays = (props) => {
   return (
     <Select
       {...props}
       showSearch
       style={{ width: '100%' }}
-      placeholder='Subunit'
+      placeholder='Type to Search'
       optionFilterProp='children'
       allowClear
       filterOption={(input, option) =>
@@ -21,17 +31,11 @@ const Subunits = (props) => {
           .localeCompare(optionB.children.toLowerCase())
       }
     >
-      <Option value='1' key='1'>
-        Subunit 1
-      </Option>
-      <Option value='2' key='2'>
-        Subunit 2
-      </Option>
-      <Option value='3' key='3'>
-        Subunit 3
-      </Option>
+      {daysList.map((elem) => (
+        <Option value={elem.value}>{elem.name}</Option>
+      ))}
     </Select>
   );
 };
 
-export default Subunits;
+export default WeekDays;
