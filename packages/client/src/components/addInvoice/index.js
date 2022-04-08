@@ -552,6 +552,17 @@ function AddInvoice(props) {
             </Form.Item>
           </Col>
           <Col xs={24} sm={12} md={6} lg={6}>
+            <Form.Item label='Cheque Date'>
+              {
+                <>
+                  {getFieldDecorator('checquedate', {
+                    initialValue: null,
+                  })(<Input />)}
+                </>
+              }
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={12} md={6} lg={6}>
             <Form.Item label='Currency'>
               {
                 <>
@@ -573,6 +584,8 @@ function AddInvoice(props) {
               }
             </Form.Item>
           </Col>
+        </Row>
+        <Row gutter={24}>
           <Col xs={24} sm={12} md={6} lg={6}>
             <Form.Item label='Tax ID'>
               {

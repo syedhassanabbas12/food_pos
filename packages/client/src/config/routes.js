@@ -19,7 +19,6 @@ import AddVendorBill from '../components/addVendorBill';
 import AddPurchaseOrder from '../components/addPurchaseOrder';
 import AddVendorCredit from '../components/addVendorCredit';
 import AddVendorReturn from '../components/addVendorReturn';
-import AddOtherTransaction from '../components/addOtherTransaction';
 import ChangePasswrord from '../components/changePassword';
 import EditProfile from '../components/editProfile';
 import ListCustomers from '../components/listCustomers';
@@ -35,7 +34,6 @@ import ListVendors from '../components/listVendors';
 import ListPurchaseOrders from '../components/listPurchaseOrders';
 import ListVendorCredits from '../components/listVendorCredits';
 import ListVendorReturns from '../components/listVendorReturns';
-import ListOtherTransactions from '../components/listOtherTransactions';
 import ListVendorBills from '../components/listVendorBills';
 import SummaryReport from '../components/summaryReport';
 import BaseLayout from '../components/layouts/BaseLayout';
@@ -59,6 +57,7 @@ import AddTenant from '../components/addTenant';
 import ListTenants from '../components/listTenants';
 import ListExpenseCatgories from '../components/listExpenseCategories';
 import AddExpenseCategory from '../components/addExpenseCategory';
+import SystemNotes from '../components/systemNotes';
 
 const Routes = [
   {
@@ -179,18 +178,6 @@ const Routes = [
     name: 'Add Expense',
     path: ROUTES.LIST_CASH_SALES,
     component: ListCashSales,
-    requireAuthentication: true,
-  },
-  {
-    name: 'Other Transactions',
-    path: ROUTES.ADD_OTHER_TRANSACTION,
-    component: AddOtherTransaction,
-    requireAuthentication: true,
-  },
-  {
-    name: 'List Other Transactions',
-    path: ROUTES.LIST_OTHER_TRANSACTIONS,
-    component: ListOtherTransactions,
     requireAuthentication: true,
   },
   {
@@ -415,6 +402,12 @@ const Routes = [
     component: SummaryReport,
     requireAuthentication: true,
   },
+  {
+    name: 'System Notes',
+    path: ROUTES.SYSTEM_NOTES,
+    component: SystemNotes,
+    requireAuthentication: true,
+  },
 ];
 
 const SiderList = [
@@ -567,7 +560,7 @@ const SiderList = [
   },
   {
     key: 'list-vendor-bills',
-    text: 'Bills',
+    text: 'Vendor Bill',
     to: ROUTES.LIST_VENDOR_BILLS,
     icon: 'pay-circle',
   },
@@ -590,16 +583,16 @@ const SiderList = [
     icon: 'exception',
   },
   {
-    key: 'list-other-transactions',
-    text: 'Other Transactions',
-    to: ROUTES.LIST_OTHER_TRANSACTIONS,
-    icon: 'interaction',
-  },
-  {
     key: 'summary-report',
     text: 'Summary Report',
     to: ROUTES.SUMMARY_REPORT,
     icon: 'bar-chart',
+  },
+  {
+    key: 'system-notes',
+    text: 'System Notes',
+    to: ROUTES.SYSTEM_NOTES,
+    icon: 'database',
   },
 ];
 

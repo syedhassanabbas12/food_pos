@@ -106,15 +106,6 @@ function ListExpense(props) {
                 </Form.Item>
               </Col>
               <Col xs={24} sm={12} md={6} lg={6}>
-                <Form.Item label='Expense Category'>
-                  <>
-                    {getFieldDecorator('expensecategory', {
-                      initialValue: null,
-                    })(<ExpenseCategory />)}
-                  </>
-                </Form.Item>
-              </Col>
-              <Col xs={24} sm={12} md={6} lg={6}>
                 <Form.Item label='Document Number'>
                   <>
                     {getFieldDecorator('tranid', {
@@ -123,8 +114,6 @@ function ListExpense(props) {
                   </>
                 </Form.Item>
               </Col>
-            </Row>
-            <Row gutter={24}>
               <Col xs={24} sm={12} md={6} lg={6}>
                 <Form.Item label='Date'>
                   <>

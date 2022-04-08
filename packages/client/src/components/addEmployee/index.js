@@ -11,6 +11,7 @@ import {
   Button,
   Input,
   DatePicker,
+  Upload,
 } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import EmployeeStatusDropdown from '../common/custom-component/dropdowns/employee-status';
@@ -358,6 +359,23 @@ function AddEmployee(props) {
                   {getFieldDecorator('nationality', {
                     initialValue: null,
                   })(<NationalityDropdown />)}
+                </>
+              }
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={12} md={6} lg={6}>
+            <Form.Item label='Company Logo'>
+              {
+                <>
+                  {getFieldDecorator('companylogo', {
+                    initialValue: null,
+                  })(
+                    <Upload>
+                      <Button>
+                        <Icon type='upload' /> Select Image
+                      </Button>
+                    </Upload>
+                  )}
                 </>
               }
             </Form.Item>

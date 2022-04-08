@@ -48,7 +48,7 @@ const ROUTES = {
   LIST_VENDOR_CREDITS: '/vendorcredits',
 
   ADD_VENDOR_AUTHORIZATION: '/addvendorauth',
-  LIST_VENDOR_AUTHOIZATIONS: '/listvendorauth',
+  LIST_VENDOR_AUTHOIZATIONS: '/vendorauths',
 
   ADD_EXPENSE: '/addexpense',
   LIST_EXPENSES: '/expenses',
@@ -87,6 +87,7 @@ const ROUTES = {
   LIST_UNITS: '/units',
 
   SUMMARY_REPORT: '/summaryreport',
+  SYSTEM_NOTES: '/systemnotes',
 };
 
 export default ROUTES;

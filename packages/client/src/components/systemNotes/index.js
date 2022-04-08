@@ -11,12 +11,9 @@ import {
   Row,
   Col,
   DatePicker,
-  Input,
 } from 'antd';
 import Styles from '../../styles/css-in-js';
-import SalesrepDropdown from '../common/custom-component/dropdowns/employee';
-import TransactionNature from '../common/custom-component/dropdowns/transaction-nature';
-import CustomerDropdown from '../common/custom-component/dropdowns/customer';
+import EmployeeDropdown from '../common/custom-component/dropdowns/employee';
 
 const Panel = Collapse.Panel;
 const { RangePicker } = DatePicker;
@@ -39,36 +36,16 @@ const columns = [
     dataIndex: 'date',
   },
   {
-    title: 'Document Number',
-    dataIndex: 'tranid',
+    title: 'Employee',
+    dataIndex: 'employee',
   },
   {
-    title: 'Name',
-    dataIndex: 'name',
-  },
-  {
-    title: 'Memo',
-    dataIndex: 'memo',
-  },
-  {
-    title: 'LPO',
-    dataIndex: 'lpo',
-  },
-  {
-    title: 'Sales Rep',
-    dataIndex: 'salesrep',
-  },
-  {
-    title: 'Transaction Nature',
-    dataIndex: 'transactionnature',
-  },
-  {
-    title: 'Amount',
-    dataIndex: 'amount',
+    title: 'Details',
+    dataIndex: 'details',
   },
 ];
 
-function ListOtherTransactions(props) {
+function SystemNotes(props) {
   const pagination = {
     current: 0,
     showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
@@ -106,43 +83,14 @@ function ListOtherTransactions(props) {
           >
             <Row gutter={24}>
               <Col xs={24} sm={12} md={6} lg={6}>
-                <Form.Item label='Customer'>
+                <Form.Item label='Employee'>
                   <>
-                    {getFieldDecorator('customer', {
+                    {getFieldDecorator('employee', {
                       initialValue: null,
-                    })(<CustomerDropdown />)}
+                    })(<EmployeeDropdown />)}
                   </>
                 </Form.Item>
               </Col>
-              <Col xs={24} sm={12} md={6} lg={6}>
-                <Form.Item label='Sales Rep'>
-                  <>
-                    {getFieldDecorator('salesrep', {
-                      initialValue: null,
-                    })(<SalesrepDropdown />)}
-                  </>
-                </Form.Item>
-              </Col>
-              <Col xs={24} sm={12} md={6} lg={6}>
-                <Form.Item label='Transaction Nature'>
-                  <>
-                    {getFieldDecorator('transactionnature', {
-                      initialValue: null,
-                    })(<TransactionNature />)}
-                  </>
-                </Form.Item>
-              </Col>
-              <Col xs={24} sm={12} md={6} lg={6}>
-                <Form.Item label='Document Number'>
-                  <>
-                    {getFieldDecorator('tranid', {
-                      initialValue: null,
-                    })(<Input />)}
-                  </>
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row gutter={24}>
               <Col xs={24} sm={12} md={6} lg={6}>
                 <Form.Item label='Date'>
                   <>
@@ -177,21 +125,11 @@ function ListOtherTransactions(props) {
             <Link to={'/'} className='btn-back'>
               <Icon type='arrow-left' />
             </Link>
-            {'Other Transactions'}
+            {'System Notes'}
           </h3>
         </span>
       }
       bordered={false}
-      extra={
-        <Link to={`/addothertransaction`}>
-          <Button
-            style={{ marginLeft: 8 }}
-            className='ant-btn ant-btn-primary btn-add'
-          >
-            Add Other Transaction
-          </Button>
-        </Link>
-      }
     >
       <div>
         {renderAdvanceSearch()}
@@ -212,15 +150,15 @@ function ListOtherTransactions(props) {
   );
 }
 
-ListOtherTransactions.propTypes = {
+SystemNotes.propTypes = {
   form: PropTypes.object,
   history: PropTypes.object,
   location: PropTypes.object,
   match: PropTypes.object,
 };
 
-const WrappedListOtherTransactions = Form.create({
-  name: 'list_other_transactions',
-})(ListOtherTransactions);
+const WrappedSystemNotes = Form.create({
+  name: 'list_system_notes',
+})(SystemNotes);
 
-export default WrappedListOtherTransactions;
+export default WrappedSystemNotes;
