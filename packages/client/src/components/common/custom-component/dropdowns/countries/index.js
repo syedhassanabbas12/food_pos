@@ -277,7 +277,9 @@ const Countries = (props) => {
       }
     >
       {countriesList.map((elem) => (
-        <Option value={elem.code}>{elem.name}</Option>
+        <Option value={elem.code} key={elem.code}>
+          {elem.name}
+        </Option>
       ))}
     </Select>
   );

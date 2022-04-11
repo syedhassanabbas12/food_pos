@@ -14,8 +14,8 @@ import {
 } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import UnitDropdown from '../common/custom-component/dropdowns/unit';
+import SubunitDropdown from '../common/custom-component/dropdowns/sub-unit';
 import Styles from '../../styles/css-in-js';
-import LocationDropdown from '../common/custom-component/dropdowns/location';
 import ProductTypeDropdown from '../common/custom-component/dropdowns/product-type';
 
 function AddProduct(props) {
@@ -118,6 +118,20 @@ function AddProduct(props) {
             </Form.Item>
           </Col>
           <Col xs={24} sm={12} md={6} lg={6}>
+            <Form.Item label='Sub-Unit'>
+              {
+                <>
+                  {getFieldDecorator('subunit', {
+                    rules: [
+                      { required: true, message: 'Sub-Unit is required' },
+                    ],
+                    initialValue: null,
+                  })(<SubunitDropdown />)}
+                </>
+              }
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={12} md={6} lg={6}>
             <Form.Item label='Price'>
               {
                 <>
@@ -138,20 +152,6 @@ function AddProduct(props) {
                   {getFieldDecorator('upc', {
                     initialValue: null,
                   })(<InputNumber style={{ width: '100%' }} />)}
-                </>
-              }
-            </Form.Item>
-          </Col>
-          <Col xs={24} sm={12} md={6} lg={6}>
-            <Form.Item label='Location'>
-              {
-                <>
-                  {getFieldDecorator('location', {
-                    rules: [
-                      { required: true, message: 'Location is required' },
-                    ],
-                    initialValue: null,
-                  })(<LocationDropdown />)}
                 </>
               }
             </Form.Item>
@@ -194,7 +194,7 @@ function AddProduct(props) {
             </Form.Item>
           </Col>
           <Col xs={24} sm={12} md={6} lg={6}>
-            <Form.Item label='Quantity'>
+            <Form.Item label='On-Hand Quantity'>
               {
                 <>
                   {getFieldDecorator('quantity', {

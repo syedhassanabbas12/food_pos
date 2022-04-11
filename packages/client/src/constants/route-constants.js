@@ -87,7 +87,7 @@ const ROUTES = {
   LIST_UNITS: '/units',
 
   SUMMARY_REPORT: '/summaryreport',
-  SYSTEM_NOTES: '/systemnotes',
+  SYSTEM_LOGS: '/systemlogs',
 };
 
 export default ROUTES;

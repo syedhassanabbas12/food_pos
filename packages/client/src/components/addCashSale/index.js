@@ -18,6 +18,7 @@ import {
   Descriptions,
 } from 'antd';
 import DepartmentDropdown from '../common/custom-component/dropdowns/department';
+import DeliveryType from '../common/custom-component/dropdowns/delivery-type';
 import ClassDropdown from '../common/custom-component/dropdowns/class';
 import CustomerDropdown from '../common/custom-component/dropdowns/customer';
 import EmployeeDropdown from '../common/custom-component/dropdowns/employee';
@@ -26,8 +27,6 @@ import SubunitDropdown from '../common/custom-component/dropdowns/sub-unit';
 import ItemsDropdown from '../common/custom-component/dropdowns/items';
 import Styles from '../../styles/css-in-js';
 import EditableCell from '../EditableCell';
-import PaymentMode from '../common/custom-component/dropdowns/payment-mode';
-import DeliveryType from '../common/custom-component/dropdowns/delivery-type';
 
 const { TabPane } = Tabs;
 const EditableContext = React.createContext();
@@ -488,17 +487,6 @@ function AddCashSales(props) {
             </Form.Item>
           </Col>
           <Col xs={24} sm={12} md={6} lg={6}>
-            <Form.Item label='Payment Mode'>
-              {
-                <>
-                  {getFieldDecorator('paymentmode', {
-                    initialValue: null,
-                  })(<PaymentMode />)}
-                </>
-              }
-            </Form.Item>
-          </Col>
-          <Col xs={24} sm={12} md={6} lg={6}>
             <Form.Item label='Delivery Type'>
               {
                 <>
@@ -529,17 +517,6 @@ function AddCashSales(props) {
     return (
       <TabPane tab='Accounting' key='acconting'>
         <Row gutter={24}>
-          <Col xs={24} sm={12} md={6} lg={6}>
-            <Form.Item label='Cheque#'>
-              {
-                <>
-                  {getFieldDecorator('checquenumber', {
-                    initialValue: null,
-                  })(<Input />)}
-                </>
-              }
-            </Form.Item>
-          </Col>
           <Col xs={24} sm={12} md={6} lg={6}>
             <Form.Item label='Currency'>
               {

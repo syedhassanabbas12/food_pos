@@ -57,7 +57,7 @@ import AddTenant from '../components/addTenant';
 import ListTenants from '../components/listTenants';
 import ListExpenseCatgories from '../components/listExpenseCategories';
 import AddExpenseCategory from '../components/addExpenseCategory';
-import SystemNotes from '../components/systemNotes';
+import SystemLogs from '../components/systemLogs';
 
 const Routes = [
   {
@@ -403,9 +403,9 @@ const Routes = [
     requireAuthentication: true,
   },
   {
-    name: 'System Notes',
+    name: 'System Logs',
     path: ROUTES.SYSTEM_NOTES,
-    component: SystemNotes,
+    component: SystemLogs,
     requireAuthentication: true,
   },
 ];
@@ -589,9 +589,9 @@ const SiderList = [
     icon: 'bar-chart',
   },
   {
-    key: 'system-notes',
-    text: 'System Notes',
-    to: ROUTES.SYSTEM_NOTES,
+    key: 'system-logs',
+    text: 'System Logs',
+    to: ROUTES.SYSTEM_LOGS,
     icon: 'database',
   },
 ];

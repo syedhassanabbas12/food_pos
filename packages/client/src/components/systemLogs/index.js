@@ -40,12 +40,16 @@ const columns = [
     dataIndex: 'employee',
   },
   {
+    title: 'Transaction',
+    dataIndex: 'transaction',
+  },
+  {
     title: 'Details',
     dataIndex: 'details',
   },
 ];
 
-function SystemNotes(props) {
+function SystemLogs(props) {
   const pagination = {
     current: 0,
     showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
@@ -125,7 +129,7 @@ function SystemNotes(props) {
             <Link to={'/'} className='btn-back'>
               <Icon type='arrow-left' />
             </Link>
-            {'System Notes'}
+            {'System Logs'}
           </h3>
         </span>
       }
@@ -150,15 +154,15 @@ function SystemNotes(props) {
   );
 }
 
-SystemNotes.propTypes = {
+SystemLogs.propTypes = {
   form: PropTypes.object,
   history: PropTypes.object,
   location: PropTypes.object,
   match: PropTypes.object,
 };
 
-const WrappedSystemNotes = Form.create({
-  name: 'list_system_notes',
-})(SystemNotes);
+const WrappedSystemLogs = Form.create({
+  name: 'list_system_logs',
+})(SystemLogs);
 
-export default WrappedSystemNotes;
+export default WrappedSystemLogs;

@@ -90,7 +90,7 @@ function AddTenant(props) {
               <>
                 {getFieldDecorator('active', {
                   initialValue: null,
-                })(<Checkbox disabled>Is Active?</Checkbox>)}
+                })(<Checkbox>Is Active?</Checkbox>)}
               </>
             </Form.Item>
           </Col>

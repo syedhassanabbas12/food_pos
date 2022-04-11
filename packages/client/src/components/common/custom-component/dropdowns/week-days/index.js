@@ -32,7 +32,9 @@ const WeekDays = (props) => {
       }
     >
       {daysList.map((elem) => (
-        <Option value={elem.value}>{elem.name}</Option>
+        <Option value={elem.value} key={elem.value}>
+          {elem.name}
+        </Option>
       ))}
     </Select>
   );

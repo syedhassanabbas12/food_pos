@@ -12,6 +12,7 @@ import {
   Input,
   DatePicker,
   Upload,
+  Checkbox,
 } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import EmployeeStatusDropdown from '../common/custom-component/dropdowns/employee-status';
@@ -364,10 +365,10 @@ function AddEmployee(props) {
             </Form.Item>
           </Col>
           <Col xs={24} sm={12} md={6} lg={6}>
-            <Form.Item label='Company Logo'>
+            <Form.Item label='Avatar'>
               {
                 <>
-                  {getFieldDecorator('companylogo', {
+                  {getFieldDecorator('avatar', {
                     initialValue: null,
                   })(
                     <Upload>
@@ -376,6 +377,17 @@ function AddEmployee(props) {
                       </Button>
                     </Upload>
                   )}
+                </>
+              }
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={12} md={6} lg={6}>
+            <Form.Item label='Status'>
+              {
+                <>
+                  {getFieldDecorator('isactive', {
+                    initialValue: null,
+                  })(<Checkbox>Is Active? </Checkbox>)}
                 </>
               }
             </Form.Item>

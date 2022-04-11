@@ -189,7 +189,9 @@ const Currencies = (props) => {
       }
     >
       {currencyList.map((elem) => (
-        <Option value={elem.code}>{elem.name}</Option>
+        <Option value={elem.code} key={elem.code}>
+          {elem.name}
+        </Option>
       ))}
     </Select>
   );

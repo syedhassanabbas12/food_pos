@@ -198,6 +198,20 @@ function AddCustomer(props) {
               }
             </Form.Item>
           </Col>
+
+          <Col xs={24} sm={12} md={6} lg={6}>
+            <Form.Item label='Credit Amount'>
+              {
+                <>
+                  {getFieldDecorator('creditamount', {
+                    initialValue: null,
+                  })(<InputNumber disabled style={{ width: '100%' }} />)}
+                </>
+              }
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={24}>
           <Col xs={24} sm={12} md={6} lg={6}>
             <Form.Item label='Address'>
               {
