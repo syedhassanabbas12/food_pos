@@ -5,7 +5,6 @@ import routes from "../api";
 import config from "../config";
 
 export default ({ app }) => {
-  console.log("WOWOWOW");
   /**
    * Health Check endpoints
    * @TODO Explain why they are here

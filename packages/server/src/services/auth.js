@@ -82,11 +82,11 @@ export default class AuthService {
     /**
      * We use verify from argon2 to prevent 'timing based' attacks
      */
-    this.logger.silly("Checking password");
+    // this.logger.silly("Checking password");
     const validPassword = await argon2.verify(userRecord.password, password);
     if (validPassword) {
-      this.logger.silly("Password is valid!");
-      this.logger.silly("Generating JWT");
+      // this.logger.silly("Password is valid!");
+      // this.logger.silly("Generating JWT");
       const token = this.generateToken(userRecord);
 
       const user = userRecord.toObject();

@@ -43,18 +43,32 @@ export default (app) => {
       }),
     }),
     async (req, res, next) => {
-      const logger = Container.get("logger");
-      logger.debug("Calling Sign-In endpoint with body: %o", req.body);
+      // const logger = Container.get("logger");
+      // logger.debug("Calling Sign-In endpoint with body: %o", req.body);
       try {
         const { email, password } = req.body;
-        const authServiceInstance = Container.get(AuthService);
-        const { user, token } = await authServiceInstance.SignIn(
-          email,
-          password
-        );
-        return res.json({ user, token }).status(200);
+        // const authServiceInstance = Container.get(AuthService);
+        // const { user, token } = await authServiceInstance.SignIn(
+        //   email,
+        //   password
+        // );
+        let resData = {
+          data: {},
+          message: "Invalid Credentials",
+          success: false,
+        };
+        if ((email == "admin", password == "admin")) {
+          resData = {
+            data: {},
+            message: "this is a message",
+            success: true,
+            user: "user",
+            token: "token",
+          };
+        }
+        return res.json(resData).status(200);
       } catch (e) {
-        logger.error("🔥 error: %o", e);
+        // logger.error("🔥 error: %o", e);
         return next(e);
       }
     }
